@@ -1,0 +1,11 @@
+Publication,Genres,Price,DA,DR,TAT,Region,Sponsored
+TechCrunch,Technology,$500,92,88,5 days,Global,Yes
+Forbes,Business,$1200,95,91,7 days,Global,Yes
+Mashable,Entertainment,$400,89,84,4 days,US,Yes
+The Guardian,News,$800,93,89,6 days,UK,Yes
+Smashing Magazine,Web Development,$350,78,75,3 days,Global,No
+Business Insider,Business,$950,90,87,5 days,US,Yes
+BuzzFeed,Entertainment,$300,85,80,3 days,Global,Yes
+The Verge,Technology,$450,88,86,4 days,US,Yes
+HuffPost,News,$600,91,88,5 days,US,Yes
+Medium,Various,$100,70,68,2 days,Global,No
