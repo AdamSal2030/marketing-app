@@ -14,49 +14,75 @@ export default function Page() {
   const data = parsed.data
 
   return (
-    <div style={styles.container}>
+    <div style={styles.page}>
       <style>{animationStyles}</style>
-      <h1 style={styles.title}>📊 CSV Data Table</h1>
-      <div style={styles.tableWrapper}>
-        <table style={styles.table} className="fade-in">
-          <thead>
-            <tr>
-              {data.length > 0 &&
-                Object.keys(data[0]).map((header) => (
-                  <th key={header} style={styles.headerCell}>
-                    {header}
-                  </th>
-                ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((row, idx) => (
-              <tr key={idx} style={styles.row}>
-                {Object.values(row).map((val, i) => (
-                  <td key={i} style={styles.cell}>
-                    {val}
-                  </td>
-                ))}
+
+      <header style={styles.header}>
+        <img src="vercel.svg" alt="Logo" style={styles.logo} />
+        <button style={styles.logoutButton} className="logout-hover">
+          Logout
+        </button>
+      </header>
+
+      {/* Table */}
+      <div style={styles.container}>
+        <div style={styles.tableWrapper}>
+          <table style={styles.table} className="fade-in">
+            <thead>
+              <tr>
+                {data.length > 0 &&
+                  Object.keys(data[0]).map((header) => (
+                    <th key={header} style={styles.headerCell}>
+                      {header}
+                    </th>
+                  ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((row, idx) => (
+                <tr key={idx} style={styles.row}>
+                  {Object.values(row).map((val, i) => (
+                    <td key={i} style={styles.cell}>
+                      {val}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   )
 }
 
 const styles = {
-  container: {
-    padding: '2rem',
+  page: {
     fontFamily: 'Arial, sans-serif',
     backgroundColor: '#f9fafb',
     minHeight: '100vh',
   },
-  title: {
-    fontSize: '2rem',
-    marginBottom: '1.5rem',
-    color: '#333',
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1rem 2rem',
+    backgroundColor: '#1e3a8a',
+    color: 'white',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    position: 'sticky',
+    top: 0,
+    zIndex: 10,
+  },
+  logo: {
+    height: 40,
+    marginRight: '1rem',
+  },
+  brand: {
+    fontSize: '1.5rem',
+    margin: 0,
+  },
+  container: {
+    padding: '2rem',
   },
   tableWrapper: {
     overflowX: 'auto',
@@ -88,6 +114,18 @@ const styles = {
     borderBottom: '1px solid #e5e7eb',
     color: '#333',
   },
+  logoutButton: {
+    marginLeft: 'auto',
+    padding: '0.5rem 1rem',
+    backgroundColor: '#ef4444',
+    border: 'none',
+    borderRadius: '4px',
+    color: '#fff',
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    cursor: 'pointer',
+    transition: 'transform 0.2s ease, background-color 0.2s ease',
+  },
 }
 
 const animationStyles = `
@@ -103,10 +141,16 @@ const animationStyles = `
 }
 
 .fade-in {
-  animation: fadeIn 0.5s ease-in;
+  animation: fadeIn 0.3s ease-in;
 }
 
 tbody tr:hover {
-  background-color: #f0f9ff;
+  background-color: rgb(147, 156, 173);
+}
+
+.logout-hover:hover {
+  transform: scale(1.1);
+  background-color: #dc2626;
 }
 `
+
