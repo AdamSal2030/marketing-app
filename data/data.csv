@@ -1,11 +1,1872 @@
-Publication,Genres,Price,DA,DR,TAT,Region,Sponsored
-TechCrunch,Technology,$500,92,88,5 days,Global,Yes
-Forbes,Business,$1200,95,91,7 days,Global,Yes
-Mashable,Entertainment,$400,89,84,4 days,US,Yes
-The Guardian,News,$800,93,89,6 days,UK,Yes
-Smashing Magazine,Web Development,$350,78,75,3 days,Global,No
-Business Insider,Business,$950,90,87,5 days,US,Yes
-BuzzFeed,Entertainment,$300,85,80,3 days,Global,Yes
-The Verge,Technology,$450,88,86,4 days,US,Yes
-HuffPost,News,$600,91,88,5 days,US,Yes
-Medium,Various,$100,70,68,2 days,Global,No
+Publication,Genres,Price,TAT,Region,Do follow,Example
+"LA Mag
+Raised",News,1190,1 Week,"California
+United States",Yes,
+Hood Critic,Music,225,1-3 Days,"United States
+Utah",Yes,
+Daily Scanner,5 genres,225,1 Day,United States,No,
+LA Collide,4 genres,225,1-3 Days,"California
+United States",No,
+Cali Post,NewsMusic,225,1-3 Days,"California
+United States",Yes,
+Medium,News,225,1 Day,Global,No,
+LA Entertainment Weekly,Entertainment,225,1 Day,"California
+United States",No,
+24 Hip Hop,3 genres,225,1-3 Days,Global,No,
+HipHopSince1987,Music,225,3 Days,Global,Yes,
+NY Times Mag,NewsLifestyle,225,1 Day,"New York
+United States",No,
+Vents Magazine,3 genres,230,1-3 Days,United States,Yes,
+Self Growth,Lifestyle,230,1 Day,Global,No,
+Mark Meets,Music,250,1 Day,United Kingdom,Yes,
+The Sustainable Post,3 genres,250,3 Days,"United States
+Global",Yes,
+Restaurant Portals,Lifestyle,250,3-5 Days,United States,Yes,
+Cryptonexa,Web 3,250,3-5 Days,Global,Yes,
+Elite Luxury News,5 genres,250,1-3 Days,"United States
+Global",Yes,
+Miami Weekly,3 genres,250,1 Day,"Florida
+United States",No,
+Opulence Magazine,News,250,3 Days,United Kingdom,Yes,
+Ravish Magazine,News,250,3 Days,United Kingdom,Yes,
+MetaPress,News,250,1-3 Days,United States,Yes,
+Platter Share,Lifestyle,250,3 Days,United States,Yes,
+The Influential,7 genres,250,3 Days,"Global
+United States",Yes,
+Home Design Looks,NewsReal Estate,250,3-5 Days,United States,Yes,
+Cali Weekly,News,250,1 Day,"California
+United States",No,
+Muzique Magazine,Music,250,1-3 Days,Global,Yes,
+CEO Magazine,Business,250,1-3 Days,United States,Yes,
+Elite Music News,MusicEntertainment,250,1-3 Days,"Global
+United States",Yes,
+The Pinnacle List,News,250,3 Days,United States,Yes,
+Exec Magazine,News,250,1-3 Days,United States,Yes,
+Explainopedia,News,250,3 Days,United States,Yes,
+Huff Mag,Lifestyle,250,1 Day,Global,No,
+Restaurant WebX,Lifestyle,250,3-5 Days,United States,Yes,
+Broke & Chic,FashionLifestyle,250,1-3 Days,Global,No,
+The Bragging Mommy,NewsLifestyle,250,3-5 Days,United States,Yes,
+Fox Interviewer,News,250,1 Week,Global,No,
+Ignite Magazine,News,250,3 Days,United Kingdom,Yes,
+Boss Today,Business,250,1-3 Days,United States,Yes,
+West Hollywood Weekly,6 genres,250,3-5 Days,"California
+United States",Yes,
+NY Magazine,News,250,1-3 Days,United States,Yes,
+Curious Mind Magazine,News,250,3-5 Days,United States,Yes,
+Elite Property News,3 genres,250,3-5 Days,"Global
+United States",Yes,
+Restaurant Web Experts,Lifestyle,250,3-5 Days,United States,Yes,
+Futuristic Architecture,Real EstateLifestyle,250,3 Days,United States,Yes,
+LIT. Magazine,News,250,3 Days,United Kingdom,Yes,
+Hamptons Weekly,News,250,1 Day,"New York
+United States",No,
+Resto Guides,Lifestyle,250,3-5 Days,United States,Yes,
+News Today,News,250,3-5 Days,United Kingdom,Yes,
+Dubai Weekly,News,250,3 Days,"Middle East
+UAE",Yes,
+LA Voice,News,250,1 Day,"California
+United States",No,
+Restaurant Web Expert,Lifestyle,250,3-5 Days,United States,Yes,
+Momma Cuisine,Lifestyle,250,3 Days,United States,Yes,
+Mom Blog Society,Lifestyle,250,3 Days,United States,Yes,
+GISuser,Tech,250,3 Days,United States,Yes,
+VC Magazine,NewsBusiness,250,1-3 Days,United States,Yes,
+Foreign Affairs Observers,News,250,1-3 Days,United States,Yes,
+Cooking Instilettos,Lifestyle,250,3-5 Days,United States,Yes,
+The Beverly Weekly,6 genres,250,3-5 Days,"California
+United States",Yes,
+"Luxury Miami Magazine
+Staff",Luxury,250,2-3 Days,Florida,No,
+LA Examiner,News,250,1 Day,"California
+United States",No,
+Tech Bullion,Tech,250,1 Week,United States,Yes,
+"CEO Official Mag
+Staff",Business,250,2-3 Days,United States,No,
+Restaurant Snapshot,Lifestyle,250,3-5 Days,United States,Yes,
+The Texas Developer,3 genres,250,3 Days,"Texas
+United States",Yes,
+Crave Magazine,News,250,3 Days,United Kingdom,Yes,
+Influence Journal,6 genres,250,3 Days,"Global
+United States",Yes,
+Weed Times,News,250,1 Day,Global,No,
+CEO Weekly,5 genres,275,3-5 Days,United States,Yes,
+Celebrity News,3 genres,275,3-5 Days,United States,Yes,
+World Reporter,3 genres,275,3-5 Days,United States,Yes,
+Nano Biz Tech,Tech,275,3-5 Days,United States,Yes,
+Style Beauty Health,FashionLifestyle,275,3-5 Days,United States,Yes,
+San Francisco Post,5 genres,275,3-5 Days,California,Yes,
+Luxury Travel Magazine,Lifestyle,275,1-3 Days,United States,Yes,
+BLK News,3 genres,275,3-5 Days,"New York
+United States",Yes,
+NY Wire,4 genres,275,3-5 Days,"New York
+United States",Yes,
+Kivo Daily,BusinessTech,275,3-5 Days,"United States
+Global",Yes,
+Load2Learn,News,275,1-3 Days,United Kingdom,Yes,
+Health Living House,NewsReal Estate,275,1-3 Days,United States,Yes,
+Entertainment Monthly News,3 genres,275,3-5 Days,Global,Yes,
+The UBJ,BusinessNews,275,1 Week,Global,No,
+Influencer Daily,3 genres,275,3-5 Days,Global,Yes,
+Carousel Bondi,Lifestyle,275,1-3 Days,Australia,Yes,
+Providr,News,275,1-3 Days,United States,Yes,
+Scotland B2B,News,275,2-3 Days,United Kingdom,Yes,
+Chicago Journal,4 genres,275,3-5 Days,"Illinois
+United States",Yes,
+Artist Weekly,Music,275,3-5 Days,United States,Yes,
+Who Design Today,LifestyleReal Estate,275,1-3 Days,Australia,Yes,
+Infopool,News,275,3-5 Days,United Kingdom,Yes,
+Market Daily,3 genres,275,3-5 Days,United States,Yes,
+Geek Insider,NewsTech,275,3-5 Days,United States,Yes,
+Portland News,4 genres,275,3-5 Days,"Oregon
+United States",Yes,
+Entertainment Post,Entertainment,275,3-5 Days,United States,Yes,
+Economic Insider,BusinessNews,275,3-5 Days,United States,Yes,
+The Power of Silence,News,275,1-3 Days,United States,Yes,
+Rosepedia,Lifestyle,275,3-5 Days,United Kingdom,Yes,
+ABC Money,NewsBusiness,275,3-5 Days,United Kingdom,Yes,
+Holly Health Fitness,Lifestyle,275,3-5 Days,United States,Yes,
+US Insider,4 genres,275,3-5 Days,Global,Yes,
+US Reporter,6 genres,275,3-5 Days,Global,Yes,
+Texas Today,News,275,3-5 Days,"Texas
+United States",Yes,
+The Naptime Reviewer,Lifestyle,275,2-3 Days,United States,Yes,
+Crewlogout,News,275,3-5 Days,United States,Yes,
+Networth.us,Business,275,3-5 Days,United States,Yes,
+Pie Mag,Real Estate,275,3-5 Days,United States,Yes,
+Music Observer,Music,275,3-5 Days,Global,Yes,
+Famous Times,3 genres,275,3-5 Days,"California
+United States",Yes,
+The Dedicated House,Lifestyle,275,1-3 Days,United States,Yes,
+Flare Magazine,Lifestyle,275,3-5 Days,United Kingdom,Yes,
+The Reddit Blog,News,275,3-5 Days,United States,Yes,
+Digital Fitness World,NewsLifestyle,275,3-5 Days,United States,Yes,
+The Marketing Pilot,NewsBusiness,275,3-5 Days,United States,Yes,
+Real Estate Today,3 genres,275,3-5 Days,Global,Yes,
+Diet of Life,News,275,1-3 Days,United States,Yes,
+London Webcam,News,275,3-5 Days,United Kingdom,Yes,
+Voyage New York,4 genres,275,3-5 Days,"New York
+United States",Yes,
+Atlanta Wire,3 genres,275,3-5 Days,"Georgia
+United States",Yes,
+Beautyation,3 genres,275,3 Days,United States,Yes,
+NY Weekly,3 genres,275,3-5 Days,"New York
+United States",Yes,
+Health Mind Magazine,News,275,1-3 Days,United States,Yes,
+Wall Street Times,3 genres,275,3-5 Days,"New York
+United States",Yes,
+LA Wire,3 genres,275,3-5 Days,"California
+United States",Yes,
+Stephi Lareine,NewsLifestyle,275,3-5 Days,United Kingdom,Yes,
+California Observer,4 genres,275,3-5 Days,California,Yes,
+Next Web Blog,Tech,275,3-5 Days,United States,Yes,
+Hangry Pants,Lifestyle,275,3-5 Days,United Kingdom,Yes,
+Miami Wire,5 genres,275,3-5 Days,"Florida
+United States",Yes,
+Women's Journal,NewsLifestyle,275,3-5 Days,United States,No,
+Infinity Else,News,275,3-5 Days,United Kingdom,Yes,
+New Jersey Independent,Lifestyle,275,3-5 Days,"United States
+New Jersey",Yes,
+US Business News,BusinessNews,275,3-5 Days,United States,Yes,
+Big Time Daily,News,275,5 Days,United States,Yes,
+Design By Sully,Lifestyle,295,3 Days,United States,Yes,
+"High Net Worth Magazine
+Staff",5 genres,300,1 Day,United States,Yes,
+Oh My Dish (Netherlands),Lifestyle,300,3-5 Days,Netherlands,Yes,
+Oh My Dish,Lifestyle,300,3 Days,United States,Yes,
+Gadgets Gaadi,News,300,3-5 Days,United States,Yes,
+Shibley Smiles,News,300,3-5 Days,United States,Yes,
+Kansas Press,News,300,3-5 Days,United States,Yes,
+LA Guest List,5 genres,300,3 Days,"California
+United States",No,
+Lux & Ent,LuxuryEntertainment,300,3-5 Days,United States,Yes,
+Florida Reporter,News,300,1-3 Days,"United States
+Florida",Yes,
+Marx-Communications.com,News,300,3-5 Days,United States,Yes,
+The Hype Magazine,EntertainmentMusic,300,1 Week,United States,Yes,
+Asset Digest,News,300,1-3 Days,United States,Yes,
+Phlox Fitness,News,300,1-3 Days,United States,Yes,
+Madison Graph,News,300,1-3 Days,United States,Yes,
+Tennessee Indepedent,News,300,3-5 Days,United States,Yes,
+San Francisco Tribune,News,300,3-5 Days,"California
+United States",Yes,
+Psychreg,Lifestyle,300,3 Days,United States,Yes,
+Jane Resture,News,300,3-5 Days,United States,Yes,
+Los Angeles Tribune,News,300,3-5 Days,"California
+United States",Yes,
+Scotlands Enchanting Kingdom,News,300,3-5 Days,United States,Yes,
+Champion Daily,News,300,3-5 Days,United States,Yes,
+Belmont Star,News,300,1-3 Days,United States,Yes,
+Commercial Architecture Magazine,News,300,3-5 Days,United States,Yes,
+Political Anthropologist,Political,300,1-3 Days,Europe,Yes,
+Bug Bog,News,300,3-5 Days,United States,Yes,
+Fairmont Post,News,300,1-3 Days,United States,Yes,
+Naluda Magazine,News,300,1-3 Days,United States,Yes,
+Girl Cooks World,Lifestyle,300,3-5 Days,United States,Yes,
+Biz Dispatch,Business,300,1-3 Days,United States,Yes,
+Economy Standard,Business,300,1-3 Days,United States,Yes,
+Urban Kenyans,News,300,3-5 Days,United States,Yes,
+Companies Digest,Business,300,1-3 Days,United States,Yes,
+"Transit Tomorrow
+Staff",3 genres,300,1-3 Days,United States,Yes,
+WW Journals,News,300,3-5 Days,United States,Yes,
+Dollar Thinking,News,300,1-3 Days,United States,Yes,
+Healthcare Business Today,News,300,3-5 Days,United States,Yes,
+Nohoarts District,News,300,2-3 Days,United States,Yes,
+Orangism,News,300,1-3 Days,United States,Yes,
+Ritz Herald News,4 genres,300,1-3 Days,Canada,Yes,
+Mississippi Indepedent,News,300,3-5 Days,United States,Yes,
+"Meditech Today
+Staff",3 genres,300,1-3 Days,United States,Yes,
+My Face Hunter,Lifestyle,300,3 Days,United States,Yes,
+GrimballJewelers.com,NewsMusic,300,3-5 Days,United States,Yes,
+Novabach.com,News,300,3-5 Days,United States,Yes,
+Kellys Thoughts On Things,Lifestyle,300,3-5 Days,United States,Yes,
+Cannabiss Blog,News,300,3-5 Days,United States,Yes,
+Get World Beauty,NewsFashion,300,3 Days,United States,Yes,
+Music Emu,NewsMusic,300,1-3 Days,United States,Yes,
+"Luxury LA Mag
+Staff",4 genres,300,1 Day,United States,Yes,
+European Financial Review,Business,300,1-3 Days,Europe,Yes,
+Innov8tiv,Tech,300,3 Days,United States,Yes,
+Our Kid Things,Lifestyle,300,3-5 Days,United States,Yes,
+Chiang Rai Times,News,300,3-5 Days,Global,No,
+European Business Review,Business,300,1-3 Days,Europe,Yes,
+Pure Net Wealth,News,300,3-5 Days,United States,Yes,
+Brands Journal,Business,300,1-3 Days,United States,Yes,
+The Luxe Insider,Luxury,300,1-3 Days,Global,Yes,
+Fintech Herald,Business,300,1-3 Days,United States,Yes,
+New York Street Food,Lifestyle,300,3-5 Days,New York,Yes,
+Wealth Tribune,News,300,1-3 Days,United States,Yes,
+International Releases,News,300,1-3 Days,United States,Yes,
+The Boss Magazine,News,300,1-3 Days,United States,Yes,
+Startup Observer,Business,300,1-3 Days,United States,Yes,
+Lincoln Citizen,News,300,1-3 Days,United States,Yes,
+Law News Network,News,300,3-5 Days,United States,Yes,
+The Hook Web,News,300,3-5 Days,United States,Yes,
+"Smartech Daily
+Staff",3 genres,300,1-3 Days,United States,Yes,
+Homes Creative,Real Estate,300,3 Days,United States,Yes,
+Blockchain Tribune,Web 3,300,1-3 Days,United States,Yes,
+Luxury Advisor,News,300,1-3 Days,United States,Yes,
+Palm Bay Herald,News,300,1-3 Days,United States,Yes,
+Entrepreneur Tribune,Business,300,1-3 Days,United States,Yes,
+Technology Dispatch,Tech,300,1-3 Days,United States,Yes,
+Multiplayerpiano.com,NewsMusic,300,3-5 Days,United States,Yes,
+Business Express,Business,300,1-3 Days,United States,Yes,
+Techgyd,Tech,300,1-3 Days,United States,Yes,
+Web Law Info,News,300,1-3 Days,United States,Yes,
+Off The MRKT,NewsReal Estate,300,3-5 Days,United States,Yes,
+Trading Herald,Business,300,1-3 Days,United States,Yes,
+Cultr Magazine,7 genres,300,1 Week,Global,Yes,
+World Financial Review,Business,300,1-3 Days,Global,Yes,
+Markets Herald,Business,300,1-3 Days,United States,Yes,
+"Financial Tech Times
+Staff",5 genres,300,1 Day,United States,Yes,
+Hudson Weekly,News,300,1-3 Days,"United States
+New York",Yes,
+Online World Herald,News,300,1-3 Days,United States,Yes,
+Richest Magazine,News,300,1 Day,Global,No,
+"Pharmatech News
+Staff",3 genres,300,1 Day,United States,Yes,
+"Law Newsday
+Staff",3 genres,300,1 Day,United States,Yes,
+Bit Rebels,TechWeb 3,300,3 Days,United States,Yes,
+House Sit World,Lifestyle,300,3 Days,United States,Yes,
+All China Review,News,300,1-3 Days,China,Yes,
+Luxe Expose,News,325,3-5 Days,United States,Yes,
+Now Entertainment,EntertainmentMusic,325,3 Days,Global,Yes,
+Music News,Music,325,3 Days,Global,No,
+"RedX Magazine
+New",News,349,3-5 Days,United States,Yes,
+NY Tech Media,Tech,350,3-5 Days,United States,Yes,
+Professors House,News,350,3 Days,United States,Yes,
+EDM Sauce,Music,350,3 Days,Global,No,
+All Hip Hop,Music,350,1 Week,Global,No,
+Magnetic Mag,Music,350,3 Days,Global,No,
+Home Town Station,News,350,3-5 Days,United States,Yes,
+Good Men Project,NewsLifestyle,350,1 Week,Global,Yes,
+IB Times (AP),7 genres,350,1 Week,Asia Pacific,No,
+We Rave You,Music,350,1 Week,Global,No,
+The Up Coming,NewsLifestyle,350,3-5 Days,United Kingdom,Yes,
+1883 Magazine,News,350,3 Days,United States,Yes,
+Deadline News,News,350,3 Days,United Kingdom,No,
+Art Daily,EntertainmentLifestyle,350,1-3 Days,Global,Yes,
+Patch.com,News,350,3-5 Days,United States,No,
+Mom The Mag,Lifestyle,350,1-3 Days,United States,No,
+ZyCrypto,Web 3,350,1 Week,Global,No,
+Anglotopia,News,350,3 Days,Illinois,Yes,
+Fine Homes and Living,Real Estate,350,3 Days,United States,Yes,
+I Love South Africa,News,350,3-5 Days,Africa,Yes,
+Neon Music,Music,350,3-5 Days,Global,Yes,
+SA Promo,News,400,3-5 Days,Africa,Yes,
+The Source,Music,400,1-3 Days,"United States
+New York",Yes,
+Australian Times,News,400,3-5 Days,Australia,Yes,
+Rich Reporter,EntertainmentBusiness,400,3-5 Days,United States,Yes,
+Adapt Network,News,400,3-5 Days,United States,Yes,
+Business Insight,BusinessNews,400,1-3 Days,United States,Yes,
+StockTwits,News,400,1-3 Days,United States,No,
+EarMilk,Music,400,2-3 Weeks,Global,No,
+Editor's Beauty,NewsLifestyle,400,3-5 Days,United States,Yes,
+The Coaching Magazine,BusinessLifestyle,400,3 Days,United States,Yes,
+Washington Independent,News,400,3-5 Days,"Washington DC
+United States",Yes,
+Deal Magazine,3 genres,400,1 Day,Global,No,
+MSN,News,200,3-5 Days,United States,Yes,
+Rap Reviews,Music,400,1-3 Days,Global,Yes,
+Indie Hackers,News,400,3-5 Days,United States,No,
+Americas Gone Viral,Entertainment,400,3-5 Days,United States,Yes,
+The Santa Clarita Valley Signal,News,400,3-5 Days,California,Yes,
+Digital Music News,Music,400,1 Week,Global,No,
+Healthcares Blog,Lifestyle,400,3-5 Days,United States,Yes,
+TheCeo.in,Business,425,3-5 Days,India,Yes,
+Newport Beach Independent,News,450,1 Week,"California
+United States",Yes,
+Science Times,Tech,450,2-3 Days,United States,Yes,
+California Business Journal,3 genres,450,1 Week,"California
+United States",Yes,
+CelebMix,3 genres,450,3 Days,Global,No,
+Outlook India,News,450,1 Week,India,No,
+Money Times,Business,450,1-3 Days,United States,Yes,
+Latitude 33 Magazine,Real EstateLifestyle,450,1 Week,"California
+United States",Yes,
+Global Banking & Finance,BusinessTech,450,3-5 Days,United States,No,
+"The Silicon Review
+New",News,450,3-5 Days,"United States
+California",Yes,
+Laguna Beach Independent,News,450,1 Week,"California
+United States",Yes,
+Lawyer Herald,News,450,2-3 Days,United States,Yes,
+Coastal Real Estate Guide,Real Estate,450,1 Week,"California
+United States",Yes,
+"Biz Fortune
+New",News,450,3-5 Days,United States,Yes,
+Fashion Week Daily,3 genres,450,3-5 Days,Global,No,
+VC Post,4 genres,450,1-3 Days,Global,No,
+Parent Herald,News,450,2-3 Days,United States,Yes,
+Game n Guide,Gaming,450,2-3 Days,United States,Yes,
+"CIO Bulletin
+New",News,450,3-5 Days,United States,Yes,
+Fintech Finance News,Business,450,1 Week,United States,Yes,
+"Yahoo News/Finance
+Press Release",NewsBusiness,450,3-5 Days,Global,No,
+KPop Starz,Music,450,2-3 Days,United States,Yes,
+Science World Report,News,450,2-3 Days,United States,Yes,
+"Billboard Argentina
+On Hold",Music,450,3 Days,Argentina,No,
+Finance Digest,Business,450,3-5 Days,United States,Yes,
+Latin Post,6 genres,450,1-3 Days,Global,No,
+Laguna Beach Magazine,FashionLifestyle,450,1 Week,"California
+United States",Yes,
+Young Health Magazine,Lifestyle,450,2-3 Days,United States,Yes,
+"Street Insider
+Press Release",NewsBusiness,450,3-5 Days,United States,No,
+Newport Beach Magazine,News,450,1 Week,"California
+United States",Yes,
+Motor Times,News,450,2-3 Days,United States,Yes,
+"Business Honor
+New",NewsBusiness,450,3-5 Days,United States,Yes,
+"Khaleej Times
+Press Release",News,475,1-2 Weeks,"UAE
+Middle East",Yes,
+"Digital Journal
+Contributor",4 genres,475,3-5 Days,Global,Yes,
+"Business Insider / Yahoo / AP News
+Press Release",3 genres,500,3-5 Days,United States,No,
+Pulse.com.gh,News,500,2-3 Days,Ghana,No,
+HackerNoon,4 genres,500,1 Week,Global,No,
+Pulse.ng,News,500,2-3 Days,Nigeria,No,
+"Block Telegraph
+Staff",4 genres,500,1 Day,Global,Yes,
+Pulse.ug,News,500,2-3 Days,Uganda,No,
+Gigwise.com,NewsEntertainment,500,1 Week,United States,Yes,
+Pulse Sports,Sports,500,2-3 Days,Nigeria,No,
+PulseSports.co.ke,Sports,500,2-3 Days,Kenya,No,
+Retail Insider,FashionLifestyle,500,1-3 Days,United States,Yes,
+Pulse.sn,News,500,2-3 Days,Senegal,No,
+Notion Online,Music,500,1 Week,Global,No,
+PulseLive.co.ke,News,500,2-3 Days,Kenya,No,
+PulseSports.ug,Sports,500,2-3 Days,Uganda,No,
+"AP News
+Press Release",News,500,3-5 Days,Global,No,
+The South African,News,500,1 Week,Africa,No,
+TechStory.in,NewsTech,500,3-5 Days,India,Yes,
+Super Crypto News,Web 3,500,3-5 Days,Global,No,
+Vegas News,News,550,3-5 Days,Nevada,Yes,
+IT Security Guru,Tech,550,1-2 Weeks,United Kingdom,Yes,
+London Loves Business,Business,550,1-2 Weeks,United Kingdom,Yes,
+Women Stuff,Lifestyle,550,1-3 Days,Africa,Yes,
+Men Stuff,Lifestyle,550,1-3 Days,Africa,Yes,
+"CoinPedia
+Press Release",Web 3,550,1 Week,Global,No,
+Considerable.com,News,600,3-5 Days,United States,Yes,
+Broadway World,Music,600,1-3 Days,United States,No,
+"All Out Door
+New",NewsLifestyle,600,3-5 Days,United States,Yes,
+Apple News (Syndication from Grit Daily),News,600,3-5 Days,United States,No,
+"AG Daily
+New",NewsLifestyle,600,3-5 Days,United States,Yes,
+Tidbits of Experience,Lifestyle,600,3-5 Days,United States,Yes,
+"CEO World Biz
+Contributor",Business,600,1-3 Days,United States,No,
+"Grit Daily
+Staff",4 genres,600,1 Day,Global,No,
+Metropolitan Design Magazine,Real Estate,600,1-3 Days,Global,Yes,
+Upscale Living,Real EstateLifestyle,600,1-3 Days,Global,Yes,
+Soup.io,News,600,1-2 Weeks,United States,Yes,
+"Outdoor Hub
+New",NewsLifestyle,600,3-5 Days,United States,Yes,
+Unfinished Man,3 genres,600,3 Days,United States,Yes,
+Tech Round,NewsTech,600,1-2 Weeks,United Kingdom,Yes,
+Bourbon and Boots,Lifestyle,600,3-5 Days,United States,Yes,
+SelfEmployed.com (Syndicates to MSN),News,600,3-5 Days,United States,Yes,
+Business Insider Africa,3 genres,600,1 Week,Africa,Yes,
+Finance Feeds,Business,600,1-3 Days,United States,Yes,
+Geek Extreme,3 genres,600,3 Days,Global,Yes,
+Sheen Magazine,3 genres,600,1-3 Days,Global,Yes,
+"Butter Cup
+New",News,650,3-5 Days,United States,Yes,
+"Benzinga
+Contributor",3 genres,650,1 Week,United States,No,
+"NewsBTC
+Press Release",Web 3,650,1-3 Days,Global,No,
+U.Today,Web 3,650,1 Week,"UAE
+Global",No,
+"Phoenix New Times
+6 Month Lifespan",News,650,3 Days,"Arizona
+United States",Yes,
+"Bitcoinist
+Press Release",Web 3,650,1-3 Days,Global,No,
+Times of Malta,News,650,3-5 Days,Europe,Yes,
+The Royal Observer,News,650,1 Week,Global,Yes,
+"Swagger Magazine
+Staff",5 genres,650,1-3 Days,United States,Yes,
+"West Word
+6 Month Lifespan",News,650,3 Days,"Colorado
+United States",Yes,
+PIX11,News,650,1 Week,"New York
+United States",No,
+SF Weekly,News,650,1-3 Days,"California
+United States",Yes,
+"Miami New Times
+6 Month Lifespan",News,650,3 Days,"Florida
+United States",Yes,
+Live Mint,News,650,1 Week,India,No,
+"Broward Palm Beach
+6 Month LifespanNew",News,650,3 Days,"Florida
+United States",Yes,
+Womens Golf Journal,Sports,650,1 Week,"Global
+United States",Yes,
+Morning Honey,LifestyleNews,650,1 Week,Global,Yes,
+Galore Magazine,4 genres,650,1-3 Days,United States,Yes,
+Female First,4 genres,650,1-3 Days,United Kingdom,No,
+SF Examiner,News,650,1-3 Days,"California
+United States",Yes,
+KDAF,News,650,1 Week,"United States
+Texas",No,
+"Dallas Observer
+6 Month Lifespan",News,650,3 Days,"Texas
+United States",Yes,
+Front Page Detectives,News,650,1 Week,Global,Yes,
+The Leader News,News,770,3-5 Days,"Texas
+United States",No,
+Bust Magazine,5 genres,770,1 Day,Global,No,
+TaxScan.in,Business,770,3-5 Days,India,Yes,
+Marina Times,News,770,1-2 Weeks,"California
+United States",Yes,
+Daily Pioneer,News,770,3-5 Days,United States,Yes,
+Village Voice,5 genres,770,1 Day,"New York
+United States",No,
+LA Weekly,6 genres,770,1 Day,"California
+United States",No,
+"Fast Company Africa
+Staff",BusinessTech,770,1 Week,"Africa
+Global",No,
+Fort Bend Star,News,770,3-5 Days,"Texas
+United States",No,
+Irvine Weekly,Lifestyle,770,1 Day,"California
+United States",No,
+The Green Sheet,News,770,3-5 Days,"Utah
+United States",No,
+OC Weekly,News,770,1-3 Days,California,No,
+San Diego Reader,News,770,3 Days,"California
+United States",No,
+"The Tempe Tribune
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"Arroyo
+Lowered",News,840,1-3 Days,"United States
+California",Yes,
+"Peoria Times
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"The Capistrano Dispatch
+Lowered",News,840,1-3 Days,"United States
+California",Yes,
+LEO Weekly,News,840,3-5 Days,Kentucky,Yes,
+"Camarillo Acorn
+Lowered",News,840,1-3 Days,"United States
+California",Yes,
+Citybeat,News,840,1-3 Days,Ohio,Yes,
+"West Valley View
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"Foothills News
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"Inside Tucson Business
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"Tucson Weekly
+Lowered",News,840,1-3 Days,"Arizona
+United States",Yes,
+"Playa Vista Magazine
+Lowered",News,840,1-3 Days,"United States
+California",Yes,
+"Simi Valley Acorn
+Lowered",News,840,1-3 Days,United States,Yes,
+Metro Times,News,840,1-3 Days,"Michigan
+United States",Yes,
+"Phoenix College Times
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+JPost,4 genres,840,1 Week,Israel,Yes,
+Cryptopolitan,Web 3,840,3 Days,Global,No,
+"The Argonaut
+Lowered",News,840,1-3 Days,"California
+United States",Yes,
+Inquirer,NewsBusiness,840,3-5 Days,Philippines,No,
+"Gilbert Sun News
+Lowered",News,840,1-3 Days,"California
+United States",Yes,
+Haute Beauty,5 genres,840,1-2 Weeks,"Florida
+United States",Yes,
+IB Times (UK),3 genres,840,3-5 Days,United Kingdom,No,
+"Desert Times
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"News Mirror
+New",News,840,3-5 Days,"California
+United States",Yes,
+"Ahwatukee Foothills News
+Lowered",News,840,1-3 Days,"Arizona
+United States",Yes,
+"Pasadena Weekly
+Lowered",News,840,1-3 Days,"United States
+California",Yes,
+"VC Reporter
+Lowered",News,840,1-3 Days,"California
+United States",Yes,
+"Arizonan SanTan Sun
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"Moorpark Acorn
+Lowered",News,840,1-3 Days,"United States
+California",Yes,
+Sauce Magazine,NewsEntertainment,840,3-5 Days,Missouri,Yes,
+"Phoenix Lovin' Life
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"Sound of Freedom
+Lowered",News,840,1-3 Days,"United States
+California",Yes,
+"The Entertainer! Magazine
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"Queencreek Tribune
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"Fontana Herald News
+New",News,840,3-5 Days,"California
+United States",Yes,
+"East Valley Tribune
+Lowered",News,840,1-3 Days,"Arizona
+United States",Yes,
+Washington Times,News,840,1 Week,"Washington State
+United States",Yes,
+"Redland Community News
+New",News,840,3-5 Days,"California
+United States",Yes,
+"Ventana Monthly
+Lowered",News,840,1-3 Days,"United States
+California",Yes,
+"LADTNews
+Lowered",News,840,1-3 Days,"California
+United States",Yes,
+"Thousand Oaks Acorn
+Lowered",News,840,1-3 Days,United States,Yes,
+"The Acorn
+Lowered",News,840,1-3 Days,United States,Yes,
+"Lovin' Life
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"SanTan Sun News
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"The Glendale Star
+Lowered",News,840,1-3 Days,"United States
+California",Yes,
+Haute Residence,LuxuryReal Estate,840,1-2 Weeks,United States,Yes,
+"Airpark News
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"Explorer News
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+"The Mesa Tribune
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+Haute Living,8 genres,840,1-2 Weeks,"Florida
+United States",Yes,
+"Marana News
+Lowered",News,840,1-3 Days,"Arizona
+United States",Yes,
+"Scottsdale Progress
+Lowered",News,840,1-3 Days,"Arizona
+United States",Yes,
+"The Foothills Focus
+Lowered",News,840,1-3 Days,"United States
+Arizona",Yes,
+Haute Time,5 genres,840,1-2 Weeks,United States,Yes,
+"Record Gazette
+New",News,840,3-5 Days,"California
+United States",Yes,
+SC Now,News,910,1 Week,"South Carolina
+United States",Yes,
+Billings Gazette,News,910,1 Week,"Montana
+United States",Yes,
+Lake Geneva Regional News,News,910,1 Week,"Wisconsin
+United States",Yes,
+Elko Daily Free Press,News,910,1 Week,"Nevada
+United States",Yes,
+The Beatrice Daily Sun,News,910,1 Week,"Nebraska
+United States",Yes,
+Univision,News,910,3 Weeks,United States,Yes,
+The Times and Democrat,News,910,1 Week,"South Carolina
+United States",Yes,
+Casper Star Tribune,News,910,1 Week,"Wyoming
+United States",Yes,
+Independent Record,News,910,1 Week,"Montana
+United States",Yes,
+Moline Dispatch & Rock Island Argus,News,910,1 Week,"Iowa
+Illinois
+United States",Yes,
+The Daily Nonpareil,News,910,1 Week,"Iowa
+United States",Yes,
+STL Today,News,910,1 Week,"Missouri
+United States",Yes,
+Journal Gazette & Times-Courier,News,910,1 Week,"Illinois
+United States",Yes,
+The Journal Times,News,910,1 Week,"Wisconsin
+United States",Yes,
+SWVA Today,News,910,1 Week,"Virginia
+United States",Yes,
+The Press of Atlantic City,News,910,1 Week,"New Jersey
+United States",Yes,
+"Crypto News
+Press ReleaseOn Hold",Web 3,910,1 Week,Global,Yes,
+Waterloo-Cedar Falls Courier,News,910,1 Week,"Iowa
+United States",Yes,
+Mooresville Tribune,News,910,1 Week,"North Carolina
+United States",Yes,
+Daily Caller,4 genres,910,1-3 Days,Global,Yes,
+The Muscatine Journal,News,910,1 Week,"Iowa
+United States",Yes,
+Hickory Daily Record,News,910,1 Week,"North Carolina
+United States",Yes,
+The Citizen Auburn Pub,News,910,1 Week,"New York
+United States",Yes,
+Waco Tribune-Herald,News,910,1 Week,"Texas
+United States",Yes,
+Culpeper Star-Exponent,News,910,1 Week,"Virginia
+United States",Yes,
+Danville Register & Bee,News,910,1 Week,"Virginia
+United States",Yes,
+Rapid City Journal,News,910,1 Week,"South Dakota
+United States",Yes,
+Globe Gazzette,News,910,1 Week,"Iowa
+United States",Yes,
+Albany Democrat-Herald,News,910,1 Week,"Oregon
+United States",Yes,
+Missoulian,News,910,1 Week,"Montana
+United States",Yes,
+Wahoo Ashland Waverly,News,910,1 Week,"Nebraska
+United States",Yes,
+Dothan Eagle,News,910,1 Week,"Alabama
+United States",Yes,
+The Pantagraph,News,910,1 Week,"Illinois
+United States",Yes,
+FXStreet,Web 3,910,3-5 Days,Global,No,
+Statesville Record & Landmark,News,910,1 Week,"North Carolina
+United States",Yes,
+The Morganton News Herald,News,910,1 Week,"North Carolina
+United States",Yes,
+Winona Daily News,News,910,1 Week,"Minnesota
+United States",Yes,
+The Buffalo News,News,910,1 Week,"New York
+United States",Yes,
+Kearney Hub,News,910,1 Week,"Nebraska
+United States",Yes,
+Winston-Salem Journal,News,910,1 Week,"North Carolina
+United States",Yes,
+Omaha World-Herald,News,910,1 Week,"Nebraska
+United States",Yes,
+My Aggie Nation,News,910,1 Week,"Texas
+United States",Yes,
+The Sentinel,News,910,1 Week,"Pennsylvania
+United States",Yes,
+Twin Falls Times-News,News,910,1 Week,"Idaho
+United States",Yes,
+The Daily Progress,News,910,1 Week,"Virginia
+United States",Yes,
+The News Virginian,News,910,1 Week,"Virginia
+United States",Yes,
+Corvallis Gazette Times,News,910,1 Week,"Oregon
+United States",Yes,
+Sioux City Journal,News,910,1 Week,"Iowa
+United States",Yes,
+Tulsa World,News,910,1 Week,"Oklahoma
+United States",Yes,
+Franklin News Post,News,910,1 Week,"Virginia
+United States",Yes,
+The Free Lance-Star,News,910,1 Week,"Virginia
+United States",Yes,
+The Eagle,News,910,1 Week,"Texas
+United States",Yes,
+Tech Times,3 genres,910,1-3 Days,Global,Yes,
+Glens Falls Post-Star,News,910,1 Week,"New York
+United States",Yes,
+Wisconsin State Journal,News,910,1 Week,"Wisconsin
+United States",Yes,
+Quad-City Times,News,910,1 Week,"Iowa
+Illinois
+United States",Yes,
+Opelika Auburn News,News,910,1 Week,"Alabama
+United States",Yes,
+The McDowell News,News,910,1 Week,"North Carolina
+United States",Yes,
+News & Record,News,910,1 Week,"North Carolina
+United States",Yes,
+Herald & Review,News,910,1 Week,"Illinois
+United States",Yes,
+Ravalli Republic,News,910,1 Week,"Montana
+United States",Yes,
+Scottsbluff Star-Herald Online,News,910,1 week,"Nebraska
+United States",Yes,
+The Roanoke Times,News,910,1 Week,"Virginia
+United States",Yes,
+La Crosse Tribune,News,910,1 Week,"Wisconsin
+United States",Yes,
+The News & Advance,News,910,1 Week,"Virginia
+United States",Yes,
+Chippewa Herald,News,910,1 Week,"Wisconsin
+United States",Yes,
+Bristol Herald Courier,News,910,1 Week,"Virginia
+United States",Yes,
+Montana Standard,News,910,1 Week,"Montana
+United States",Yes,
+Fremont Tribune,News,910,1 Week,"Nebraska
+United States",Yes,
+The Columbus Telegram,News,910,1 Week,"Nebraska
+United States",Yes,
+The Bismarck Tribune,News,910,1 Week,"North Dakota
+United States",Yes,
+The Daily News,News,910,1 Week,"Washington State
+United States",Yes,
+The Independent Tribune,News,910,1 Week,"North Carolina
+United States",Yes,
+Kenosha News,News,910,1 Week,"Wisconsin
+United States",Yes,
+Arizona Daily Star,News,910,1 Week,"Arizona
+United States",Yes,
+The Grand Island Independent,News,910,1 Week,"Nebraska
+United States",Yes,
+The Times of Northwest Indiana,News,910,1 Week,"Indiana
+United States",Yes,
+York News-Times,News,910,1 Week,"Nebraska
+United States",Yes,
+The North Platte Telegraph,News,910,1 Week,"Nebraska
+United States",Yes,
+Martinsville Bulletin,News,910,1 Week,"Virginia
+United States",Yes,
+IB Times (JP),NewsBusiness,910,3-5 Days,"Japan
+Global",No,
+Lexington Clipper-Herald,News,910,1 Week,"Nebraska
+United States",Yes,
+"TheStreet.com
+New",News,910,1-3 Days,United States,Yes,
+Richmond Times-Dispatch,News,910,1 Week,"Virginia
+United States",Yes,
+Lincoln Journal Star,News,910,1 Week,"Nebraska
+United States",Yes,
+IB Times (UAE),4 genres,910,1-2 Weeks,"UAE
+Middle East",No,
+"Flaunt Magazine
+Raised",4 genres,980,1 Week,"United States
+California",Yes,
+"Jimboomba Times
+New",News,1050,1 Week,Australia,Yes,
+Daily Press,News,1050,2 Weeks,"Virginia
+United States",No,
+Whittier Daily News,News,1050,1-2 Weeks,California,No,
+"Bradenton Herald
+Press Release",News,1050,3-5 Days,Florida,No,
+"Goulburn Post
+New",News,1050,1 Week,Australia,Yes,
+San Clemente Times,News,1050,1-3 Days,"California
+United States",Yes,
+"Mudgee Guardian
+New",News,1050,1 Week,Australia,Yes,
+"The Olympian
+Press Release",3 genres,1050,1 Week,Washington State,No,
+Hartford Courant,News,1050,3-5 Days,"Connecticut
+United States",No,
+"Home Textiles Today
+New",NewsLifestyle,1050,3-5 Days,United States,Yes,
+DevX,NewsTech,1050,1-3 Days,United States,Yes,
+L'Officiel Austria,4 genres,1050,1 Week,"Europe
+Global",Yes,
+"Business of Law Digest
+New",NewsLegal,1050,3-5 Days,United States,No,
+Excelsior California,News,1050,1-2 Weeks,California,No,
+Readwrite.com,NewsTech,1050,1-2 Weeks,United States,Yes,
+"Coingape
+Press Release",Web 3,1050,3 Days,Global,No,
+"Central Penn Business Journal
+New",News,1050,3-5 Days,"Pennsylvania
+United States",Yes,
+"Busselton Mail
+New",News,1050,1 Week,Australia,Yes,
+"Minnesota Lawyer
+New",NewsLegal,1050,3-5 Days,"United States
+Minnesota",Yes,
+"GSA Business Report
+New",NewsBusiness,1050,3-5 Days,"United States
+South Carolina",Yes,
+Distractify.com (Syndicates with MSN),NewsEntertainment,1050,1-3 Days,United States,Yes,
+"Long Island Business News
+New",News,1050,3-5 Days,"United States
+New York",Yes,
+Ladygunn.com,Entertainment,1050,1-2 Weeks,United States,Yes,
+Mercury News,News,1050,3-5 Days,California,No,
+Daily Sundial,News,1050,1 Week,United States,Yes,
+"Belleville News-Democrat
+Press Release",News,1050,3-5 Days,Illinois,No,
+"Kansas.com
+Press Release",News,1050,3-5 Days,"United States
+Kansas",No,
+The San Bernardino Sun,News,1050,1-2 Weeks,California,No,
+IB Times (AU),5 genres,1050,3-5 Days,Australia,No,
+"Charlotte Observer
+Press Release",News,1050,3-5 Days,North Carolina,No,
+"The Sacramento Bee
+Press Release",News,1050,3-5 days,California,No,
+"Idaho Business Review
+New",News,1050,3-5 Days,"United States
+Idaho",No,
+Phoenix.org,News,1050,1-3 Days,"United States
+Arizona",Yes,
+"Finance & Commerce
+New",News,1050,3-5 Days,United States,Yes,
+"The Modesto Bee
+Press Release",News,1050,3-5 Days,California,No,
+"North Queen Land Register
+New",News,1050,1 Week,Australia,Yes,
+"Centre Daily Times
+Press Release",News,1050,3-5 Days,Pennsylvania,No,
+Pasadena Star News,News,1050,1-2 Weeks,California,No,
+Wonderwall.com,3 genres,1050,1 Week,United States,Yes,
+Atlantic City Weekly,News,1050,1 Week,"New Jersey
+United States",Yes,
+"Missouri Lawyers
+New",NewsLegal,1050,3-5 Days,"United States
+Missouri",Yes,
+"Myrtle Beach Sun News
+Press Release",News,1050,3-5 Days,"South Carolina
+United States",No,
+"SC Biz News
+New",News,1050,3-5 Days,"United States
+South Carolina",Yes,
+"DailyReporter.com
+New",News,1050,3-5 Days,"Wisconsin
+United States",Yes,
+Market Realist,NewsBusiness,1050,1-3 Days,United States,Yes,
+"Wisconsin Law Journal
+New",NewsLegal,1050,3-5 Days,"United States
+Wisconsin",Yes,
+"Virginia Lawyers Weekly
+New",NewsLegal,1050,3-5 Days,United States,Yes,
+"The Herald Sun
+Press Release",News,1050,3-5 Days,North Carolina,No,
+OC Register,News,1050,1-2 Weeks,California,No,
+"Ledger Enquirer
+Press Release",News,1050,3-5 Days,Georgia,No,
+"Gifts & Decorations
+New",NewsLifestyle,1050,3-5 Days,United States,Yes,
+Press Telegram,News,1050,1-2 Weeks,California,No,
+"New York Daily Record
+New",News,1050,3-5 Days,"United States
+New York",Yes,
+"Margaret River Mail
+New",News,1050,1 Week,Australia,Yes,
+Dana Point Times,News,1050,1-3 Days,"United States
+California",Yes,
+"Macleay Argus
+New",News,1050,1 Week,Australia,Yes,
+East Bay Times,4 genres,1050,3 Days,California,No,
+Redlands Daily Facts,News,1050,1-2 Weeks,California,No,
+Denver Post,News,1050,1-2 Weeks,Colorado,No,
+"Katherine Times
+New",News,1050,1 Week,Australia,Yes,
+"North Carolina Lawyers
+New",News,1050,3-5 Days,"United States
+North Carolina",Yes,
+"Mecklenburg Times
+New",News,1050,3-5 Days,"United States
+North Carolina",Yes,
+Sun Sentinel,News,1050,2 Weeks,"Florida
+United States",No,
+San Gabriel Valley Tribune,News,1050,1-2 Weeks,California,No,
+"KNewz
+Staff",4 genres,1050,1 Week,Global,Yes,
+"Columbia Business Report
+New",News,1050,3-5 Days,"United States
+South Carolina",Yes,
+"Crypto Potato
+Press Release",Web 3,1050,1-2 Weeks,Global,No,
+Killer Startups,NewsBusiness,1050,1-3 Days,United States,Yes,
+"Mail Times
+New",News,1050,1 Week,Australia,Yes,
+The Virginian-Pilot,News,1050,1 Week,"Virginia
+United States",No,
+"The Island Packet
+Press Release",News,1050,3-5 Days,"South Carolina
+United States",No,
+"Idaho Statesman
+Press Release",News,1050,3-5 Days,Idaho,No,
+Chicago Tribune,News,1050,2 Weeks,"Illinois
+United States",No,
+"The Telegraph
+Press Release",NewsSports,1050,3-5 Days,"Illinois
+United States",No,
+Daily Breeze,News,1050,1-2 Weeks,California,No,
+"Designers Today
+New",News,1050,3-5 Days,United States,Yes,
+Spin.com,MusicNews,1050,1 Week,United States,Yes,
+"Merced Sun Star
+Press Release",News,1050,3-5 Days,California,No,
+"The Herald
+Press Release",3 genres,1050,3-5 Days,South Carolina,No,
+"The Journal Record
+New",News,1050,3-5 Days,"United States
+Oklahoma",Yes,
+"New Jersey Business
+New",News,1050,3-5 Days,"United States
+New Jersey",Yes,
+"South Carolina Lawyers Weekly
+New",NewsLegal,1050,3-5 Days,"South Carolina
+United States",Yes,
+San Diego Union Tribune,News,1050,1-2 Weeks,California,No,
+"The Bellingham Herald
+Press Release",News,1050,3-5 Days,Washington State,No,
+Kaltbult Magazine,Entertainment,1050,1-2 Weeks,United States,Yes,
+Daily Bulletin,News,1050,1-2 Weeks,California,No,
+"Barchart
+Press Release",Business,1050,3-5 Days,United States,No,
+"Fort Worth Star-Telegram
+Press Release",News,1050,3-5 Days,Texas,No,
+"DJC Oregon
+New",News,1050,3-5 Days,"United States
+Oregon",Yes,
+"Charleston Business
+New",NewsBusiness,1050,3-5 Days,"South Carolina
+United States",No,
+"Sun Herald
+Press Release",News,1050,3-5 Days,Michigan,No,
+"Michigan Lawyers Weekly
+New",NewsLegal,1050,3-5 Days,"United States
+Michigan",Yes,
+CoinCodex,Web 3,1050,3-5 Days,Global,No,
+"Rhode Island Lawyers Weekly
+New",NewsLegal,1050,3-5 Days,"United States
+New York",Yes,
+"Home Furnishings News
+New",NewsLifestyle,1050,3-5 Days,United States,Yes,
+"Kansas City Star
+Press Release",News,1050,3-5 Days,Kansas,No,
+Orlando Sentinel,News,1050,2 Weeks,"Florida
+United States",No,
+"Rochester Business Journal
+New",News,1050,3-5 Days,"United States
+New York",Yes,
+"Stock Journal
+New",News,1050,1 Week,Australia,Yes,
+Elle (Ukraine),FashionNews,1050,1-2 Weeks,Ukraine,No,
+"Redland City Bulletin
+New",News,1050,1 Week,Australia,Yes,
+The Morning Call,News,1050,2 Weeks,"Pennsylvania
+United States",No,
+"Maryland Daily Record
+New",News,1050,3-5 Days,"United States
+Maryland",Yes,
+L'Officiel Cyprus,FashionLifestyle,1050,1 Week,"Europe
+Global",Yes,
+"Bunbury Mail
+New",News,1050,1 Week,Australia,Yes,
+"Stock and Land
+New",News,1050,1 Week,Australia,Yes,
+"Radar Online (+ Wonderwall.com)
+StaffNew",4 genres,1050,1 Week,United States,Yes,
+NY Daily News,News,1050,3-5 Days,"New York
+United States",No,
+"The News Tribune
+Press Release",News,1050,3-5 Days,Washington State,No,
+Silicon Valley,News,1050,1-2 Weeks,California,No,
+"The Fresno Bee
+Press Release",News,1050,3-5 Days,California,No,
+L'Officiel Monaco,4 genres,1050,1-3 Days,"Monaco
+Global",Yes,
+Coin Edition,Web 3,1050,3-5 Days,Global,No,
+"Lexington Herald-Leader
+Press Release",News,1050,3-5 Days,Kentucky,No,
+"Pet Age
+New",NewsLifestyle,1050,3-5 Days,United States,Yes,
+Green Matters (Syndicates with MSN & Apple News),Lifestyle,1050,1-3 Days,United States,Yes,
+"Port Stephens Examiner
+New",News,1050,1 Week,Australia,Yes,
+Fast Company (Mexico),BusinessNews,1050,1 Week,Mexico,Yes,
+Baltimore Sun,News,1050,3-5 Days,"Maryland
+United States",No,
+Los Angeles Daily News,News,1050,1-2 Weeks,California,No,
+"Tri-City Herald
+Press Release",News,1050,3-5 Days,Washington State,No,
+"New Orleans City Business
+New",News,1050,3-5 Days,"United States
+Louisiana",Yes,
+"The News & Observer
+Press Release",News,1050,3-5 Days,South Carolina,No,
+"Lehigh Valley Business
+New",News,1050,3-5 Days,"United States
+Pennsylvania",Yes,
+"San Luis Obispo Tribune
+Press Release",News,1050,3-5 Days,California,No,
+"Hollywood Life
+Staff",EntertainmentLifestyle,1050,1-3 Days,"California
+United States",Yes,
+"Virginia Business
+New",News,1050,3-5 Days,"Virginia
+United States",Yes,
+"ColoradoBiz.com
+New",News,1050,3-5 Days,"United States
+Colorado",Yes,
+"Miami Herald
+Press Release",7 genres,1050,1 Week,Florida,No,
+Press Enterprise,News,1050,1-2 Weeks,California,No,
+"Furniture Today
+New",Lifestyle,1050,3-5 Days,United States,Yes,
+"The State
+Press Release",News,1050,3-5 Days,South Carolina,No,
+"Massachusetts Lawyers Weekly
+New",News,1050,3-5 Days,"United States
+Massachusetts",Yes,
+"Harper's Bazaar Vietnam
+Staff",4 genres,1050,1 Week,"Vietnam
+Global",Yes,
+"Home Accents Today
+New",NewsLifestyle,1050,3-5 Days,United States,Yes,
+Playboy (Netherlands),NewsEntertainment,1120,1 Week,Netherlands,Yes,
+Mashable (NL),5 genres,1120,1 Week,Netherlands,Yes,
+World Star,Music,1120,3-5 Days,United States,Yes,
+"Gulf Times
+Press Release",News,1120,1-2 Weeks,"UAE
+Middle East",Yes,
+Soap Opera Digest,EntertainmentLifestyle,1190,1 Week,United States,Yes,
+Life & Style,7 genres,1190,1-3 Weeks,"United States
+Global",No,
+In Touch Weekly,5 genres,1190,1-3 Weeks,"Global
+United States",No,
+Woman's World,LifestyleFashion,1190,1-2 Weeks,"Global
+United States",No,
+Hollywood Unlocked,4 genres,1190,1 Week,"California
+United States",Yes,
+"Pasadena Magazine
+Raised",FashionLifestyle,1190,1 Week,"California
+United States",Yes,
+"Orange Coast Magazine
+Raised",Lifestyle,1190,1 Week,"California
+United States",Yes,
+First for Women,3 genres,1190,3 Weeks,"Global
+United States",No,
+Closer Weekly,4 genres,1190,3 Weeks,"Global
+United States",No,
+Daily Comet,News,1400,1-2 Weeks,"Louisiana
+United States",No,
+Chillicothe Gazette,News,1400,1-2 Weeks,"Ohio
+United States",No,
+House & Garden Africa,Real EstateLifestyle,1400,1-2 Weeks,Africa,No,
+The Evening Tribune,News,1400,1-2 Weeks,"New York
+United States",No,
+Herald Times Reporter,3 genres,1400,1-2 Weeks,"Wisconsin
+United States",No,
+Cheboygan Daily Tribune,News,1400,1-2 Weeks,"Michigan
+United States",No,
+Stevens Point Journal,News,1400,1-2 Weeks,"Wisconsin
+United States",No,
+Freeport Journal Standard,News,1400,1-2 Weeks,"Illinois
+United States",No,
+Daily Messenger,News,1400,1-2 Weeks,"New York
+United States",No,
+The Gadsden Times,News,1400,1-2 Weeks,"Alabama
+United States",No,
+Coshocton Tribune,News,1400,1-2 Weeks,"Ohio
+United States",No,
+Mediaite,AlcoholPolitical,1400,3-5 Days,United States,No,
+Pal-item,News,1400,1-2 Weeks,"Indiana
+United States",No,
+"The Mandarin (Australia)
+New",NewsBusiness,1400,2-3 Weeks,Australia,No,
+Port Clinton News Herald,News,1400,1-2 Weeks,"Ohio
+United States",No,
+The Record Herald,News,1400,1-2 Weeks,"Pennsylvania
+United States",No,
+Bottle Raiders,Lifestyle,1400,1 Week,United States,No,
+"OK! Magazine (+ Wonderwall.com)
+StaffNew",5 genres,1400,3-5 Days,"Global
+United States",Yes,
+The Gardener News,News,1400,1-2 Weeks,"Massachusetts
+United States",No,
+The Daily Jeffersonian,News,1400,1-2 Weeks,"Ohio
+United States",Yes,
+Bucyrus Telegraph-Forum,News,1400,1-2 Weeks,"Ohio
+United States",No,
+Marshfield News Herald,News,1400,1-2 Weeks,"Wisconsin
+United States",No,
+Reporter-Times,3 genres,1400,1-2 Weeks,"Indiana
+United States",No,
+Tri-County Independent,News,1400,1-2 Weeks,"Pennsylvania
+United States",No,
+Henderson News,News,1400,1-2 Weeks,"Kentucky
+United States",Yes,
+The Daily Record,NewsBusiness,1400,1-2 Weeks,"Ohio
+United States",No,
+The Sault News,News,1400,1-2 Weeks,"Michigan
+United States",No,
+Rolling Stone (MENA),NewsEntertainment,1400,1-2 Weeks,"Africa
+Middle East",Yes,
+Canton Daily Ledger,News,1400,1-2 Weeks,"Illinois
+United States",No,
+The Progress-Index,News,1400,1-2 Weeks,"Virginia
+United States",No,
+Pekin Daily Times,News,1400,1-2 Weeks,"Illinois
+United States",No,
+Kent Ravenna Record-Courier,News,1400,1-2 Weeks,"Ohio
+United States",No,
+Marie Claire (Netherlands),4 genres,1400,1 Week,Netherlands,Yes,
+Harper's Bazaar (Australia),4 genres,1400,1-3 Weeks,Australia,Yes,
+Attitude,3 genres,1400,1-2 Weeks,United Kingdom,Yes,
+"Robb Report (Africa)
+Under Development",NewsLuxury,1400,1-2 Weeks,Africa,Yes,
+Men's Health (Australia),Lifestyle,1400,1-3 Weeks,Australia,Yes,
+Times Reporter,News,1400,1-2 Weeks,"Ohio
+United States",No,
+Daily World,News,1400,1-2 Weeks,"Louisiana
+United States",No,
+Esquire (Australia),3 genres,1400,1-3 Weeks,Australia,Yes,
+Hillsdale Daily News,News,1400,1-2 Weeks,"Michigan
+United States",No,
+Techopedia (Mention),News,1400,1 Week,United States,Yes,
+Coldwater Daily Reporter,News,1400,1-2 Weeks,"Michigan
+United States",No,
+Times-Mail,News,1400,1-2 Weeks,"Indiana
+United States",No,
+"The Gazette
+On Hold",News,1400,1 Week,"Colorado
+United States",No,
+Galesburg Register Mail,News,1400,1-2 Weeks,"Illinois
+United States",No,
+Pontiac Daily Leader,News,1400,1-2 Weeks,"Illinois
+United States",No,
+Cryptonomist,Web 3,1400,3 Days,Global,No,
+"The Denver Gazette
+On Hold",News,1400,1 Week,Colorado,No,
+J-14 Magazine,5 genres,1400,1-3 Weeks,Global,No,
+Soaps In Depth,Entertainment,1400,1 Week,"Global
+United States",Yes,
+Oakridger,News,1400,1-2 Weeks,"Tennessee
+United States",No,
+Ruidoso News,News,1400,1-2 Weeks,"New Mexico
+United States",No,
+Food And Wine Español,Alcohol,1400,1-2 Weeks,Mexico,No,
+The Newport Daily News,News,1400,1-2 Weeks,"Rhode Island
+United States",No,
+The Daily Advertiser,News,1400,1-2 Weeks,"Louisiana
+United States",No,
+"NewsMax
+6 Month Lifespan",4 genres,1400,2-3 Weeks,"Global
+United States",No,
+Sturgis Journal,3 genres,1400,1-2 Weeks,"Michigan
+United States",No,
+"Realty Times
+Contributor",Real Estate,1400,1-2 Weeks,United States,No,
+Lancaster Eagle-Gazette,News,1400,1-2 Weeks,"Ohio
+United States",No,
+Daily American Online,News,1400,1-2 Weeks,"Pennsylvania
+United States",No,
+Ashland Times Gazette,News,1400,1-2 Weeks,"Ohio
+United States",No,
+Watertown Public Opinion,News,1400,1-2 Weeks,"South Dakota
+United States",No,
+The Daily Telegram,News,1400,1-2 Weeks,"Michigan
+United States",No,
+The Alliance Review,News,1400,1-2 Weeks,"Ohio
+United States",No,
+Massillon Independent,News,1400,1-2 Weeks,"Ohio
+United States",No,
+Corning Leader,News,1400,1-2 Weeks,"New York
+United States",No,
+McDonough County Voice,News,1400,1-2 Weeks,"Illinois
+United States",No,
+Examiner-Enterprise,News,1400,1-2 Weeks,"Oklahoma
+United States",No,
+Kewanee Star Courier,News,1400,1-2 Weeks,"Illinois
+United States",No,
+The Marion Star,News,1400,1-2 Weeks,"Ohio
+United States",No,
+Law & Crime,3 genres,1400,3-5 Days,Global,No,
+Fault Magazine,Entertainment,1400,1-2 Weeks,United States,Yes,
+Fremont News Messenger,News,1400,1-2 Weeks,"Ohio
+United States",No,
+Carlsbad Current Argus,News,1400,1-2 Weeks,"New Mexico
+United States",No,
+Winter Haven News Chief,News,1400,1-2 Weeks,"Florida
+United States",No,
+The Times Telegram,3 genres,1400,1-2 Weeks,"New York
+United States",No,
+"Reuters
+Press Release",News,1400,1-2 Weeks,United States,Yes,
+Wisconsin Rapids Tribune,News,1400,1-2 Weeks,"Wisconsin
+United States",No,
+Ellwood City Ledger,News,1400,1-2 Weeks,"Pennsylvania
+United States",No,
+Lincoln Courier,News,1400,1-2 Weeks,"Illinois
+United States",No,
+Smart Company Australia,NewsBusiness,1400,2-3 Weeks,Australia,No,
+Salina Journal,News,1400,1-2 Weeks,"Kansas
+United States",No,
+Women's Health (Australia),LifestyleSports,1400,1-3 Weeks,Australia,Yes,
+GQ South Africa,6 genres,1610,1-2 Weeks,Africa,No,
+AV Club,Lifestyle,1610,1 Week,United States,Yes,
+Paste Magazine,MusicEntertainment,1610,1 Week,"Georgia
+United States",Yes,
+Splinter.com,NewsPolitical,1610,1 Week,United States,Yes,
+Glamour South Africa,6 genres,1610,1-2 Weeks,Africa,No,
+Jezebel.com,EntertainmentLifestyle,1610,1 Week,United States,Yes,
+Travel and Leisure Mexico,Lifestyle,1680,1 Week,Mexico,Yes,
+Forbes Mexico,7 genres,1680,1-2 Weeks,Mexico,No,
+Player One,3 genres,1680,3-5 Days,United States,No,
+Forbes Colombia,7 genres,1680,1-2 Weeks,Colombia,Yes,
+Entrepreneur (India),6 genres,1680,1-2 Weeks,India,Yes,
+Fashion Times,Fashion,1680,1 Week,"United States
+New York",No,
+Times of Israel,News,1680,3-5 Days,Israel,No,
+Elite Daily,3 genres,1750,1-2 Weeks,"United States
+Global",No,
+Fosters Daily Democrat,News,1750,1-2 Weeks,"New Hampshire
+United States",No,
+"Portnews
+New",News,1750,1 Week,Australia,Yes,
+Jackson Sun,News,1750,1-2 Weeks,"Tennessee
+United States",No,
+Palm Beach Post,4 genres,1750,1-2 Weeks,"Florida
+United States",No,
+Herald-Mail Media,News,1750,1-2 Weeks,"Maryland
+United States",No,
+"Central Western Daily
+New",News,1750,1 Week,Australia,Yes,
+Utica Observer Dispatch,News,1750,1-2 Weeks,"New York
+United States",No,
+St. Augustine Record,News,1750,1-2 Weeks,"Florida
+United States",No,
+The Monroe News,News,1750,1-2 Weeks,"Michigan
+United States",No,
+Morris County Daily Record,News,1750,1-2 Weeks,"New Jersey
+United States",No,
+Worcester Telegram,News,1750,1-2 Weeks,"Massachusetts
+United States",No,
+"The Examiner
+New",News,1750,1 Week,Australia,Yes,
+The Clarion-Ledger,News,1750,1-2 Weeks,"Mississippi
+United States",No,
+Lakeland Ledger,News,1750,1-2 Weeks,"Florida
+United States",No,
+Journal Star,News,1750,1-2 Weeks,"Illinois
+United States",No,
+"Bendigo Advertiser
+New",News,1750,1 Week,Australia,Yes,
+El Paso Times,News,1750,1-2 Weeks,"Texas
+United States",No,
+Detroit Free Press,4 genres,1750,1-2 Weeks,"Michigan
+United States",No,
+"Western Advocate
+New",News,1750,1 Week,Australia,Yes,
+Ocala StarBanner,News,1750,1-2 Weeks,"Florida
+United States",No,
+Times Herald-Record,News,1750,1-2 Weeks,"New York
+United States",No,
+The Times Herald,News,1750,1-2 Weeks,"Michigan
+United States",No,
+Shelby Star,News,1750,1-2 Weeks,"North Carolina
+United States",No,
+The Bulletin,News,1750,1-2 Weeks,"Connecticut
+United States",No,
+"Newcastle Herald
+New",News,1750,1 Week,Australia,Yes,
+Statesman Journal,News,1750,1-2 Weeks,"Oregon
+United States",No,
+Athens Banner-Herald,News,1750,1-2 Weeks,"Georgia
+United States",No,
+Delaware Online,News,1750,1-2 Weeks,"Delaware
+United States",No,
+Newark Advocate,News,1750,1-2 Weeks,"Ohio
+United States",No,
+InStyle Mexico,4 genres,1750,1-2 Weeks,Mexico,No,
+Battle Creek Enquirer,News,1750,1-2 Weeks,"Michigan
+United States",No,
+Daytona Beach News-Journal,News,1750,1-2 Weeks,"Florida
+United States",No,
+Green Bay Press Gazette,News,1750,1-2 Weeks,"Wisconsin
+United States",No,
+Iowa City Press-Citizen,News,1750,1-2 Weeks,"Iowa
+United States",No,
+GoUpstate,News,1750,1-2 Weeks,"South Carolina
+United States",No,
+The Ames Tribune,News,1750,1-2 Weeks,"Iowa
+United States",No,
+The Californian,News,1750,1-2 Weeks,"California
+United States",No,
+"Hawkesbury Gazette
+New",News,1750,1 Week,Australia,Yes,
+The Spectrum,News,1750,1-2 Weeks,"Utah
+United States",No,
+Northwest Florida Daily News,News,1750,1-2 Weeks,"Florida
+United States",No,
+Great Falls Tribune,News,1750,1-2 Weeks,"Montana
+United States",No,
+Columbia Daily Tribune,News,1750,1-2 Weeks,"Missouri
+United States",No,
+"Bega District News
+New",News,1750,1 Week,Australia,Yes,
+"Daily Liberal
+New",News,1750,1 Week,Australia,Yes,
+The Tennessean,News,1750,1-2 Weeks,"Tennessee
+United States",No,
+VV Daily Press,News,1750,1-2 Weeks,"California
+United States",No,
+The Citizen-Times,News,1750,1-2 Weeks,"North Carolina
+United States",No,
+The Poughkeepsie Journal,News,1750,1-2 Weeks,"New York
+United States",No,
+"Blue Mountain Gazette
+New",News,1750,1 Week,Australia,Yes,
+The Columbus Dispatch,News,1750,1-2 Weeks,"Ohio
+United States",No,
+"Farm Weekly
+New",News,1750,1 Week,Australia,Yes,
+Oshkosh Northwestern,News,1750,1-2 Weeks,"Wisconsin
+United States",No,
+Democrat & Chronicle,News,1750,1-2 Weeks,"New York
+United States",No,
+Success.com,3 genres,1750,6-8 Weeks,United States,No,
+The Herald-Times,News,1750,1-2 Weeks,"Indiana
+United States",No,
+CantonRep,News,1750,1-2 Weeks,"Ohio
+United States",No,
+Shreveport Times,News,1750,1-2 Weeks,"Louisiana
+United States",No,
+Indianapolis Star,News,1750,1-2 Weeks,"Indiana
+United States",No,
+Petoskey News-Review,News,1750,1-2 Weeks,"Michigan
+United States",No,
+Sea Coast Online,News,1750,1-2 Weeks,"New Hampshire
+United States",No,
+Argus Leader,News,1750,1-2 Weeks,"South Dakota
+United States",No,
+St. Cloud Times,News,1750,1-2 Weeks,"Minnesota
+United States",No,
+New Jersey Herald,News,1750,1-2 Weeks,"New Jersey
+United States",No,
+Leesburg Daily Commercial,News,1750,1-2 Weeks,"Florida
+United States",No,
+York Daily Record,News,1750,1-2 Weeks,"Pennsylvania
+United States",No,
+Tallahassee Democrat,News,1750,1-2 Weeks,"Florida
+United States",No,
+Elle Quebec,3 genres,1750,1 Week,Canada,Yes,
+The Daily Journal,News,1750,1-2 Weeks,"New Jersey
+United States",No,
+Recordnet.com,News,1750,1-2 Weeks,"California
+United States",No,
+Romper,Lifestyle,1750,1-2 Weeks,"United States
+Global",No,
+Savannah Morning News,News,1750,1-2 Weeks,"Georgia
+United States",No,
+The Providence Journal,News,1750,1-2 Weeks,"Rhode Island
+United States",No,
+The Topeka Capital-Journal,News,1750,1-2 Weeks,"Kansas
+United States",No,
+Independent-Mail,6 genres,1750,1-2 Weeks,"Global
+South Carolina",No,
+My Central Jersey,News,1750,1-2 Weeks,"New Jersey
+United States",No,
+Wilmington Star-News,News,1750,1-2 Weeks,"North Carolina
+United States",No,
+Burlington Free Press,News,1750,1-2 Weeks,"Vermont
+United States",No,
+The Augusta Chronicle,News,1750,1-2 Weeks,"Georgia
+United States",No,
+"The Land
+New",News,1750,1 Week,Australia,Yes,
+Tuscaloosa News,News,1750,1-2 Weeks,"Alabama
+United States",No,
+"Mandurah Mail
+New",News,1750,1 Week,Australia,Yes,
+Panama City News-Herald,News,1750,1-2 Weeks,"Florida
+United States",No,
+VC Star,News,1750,1-2 Weeks,"California
+United States",No,
+Aberdeen News,6 genres,1750,1-2 Weeks,"Global
+Virginia",No,
+Knox News,News,1750,1-2 Weeks,"Tennessee
+United States",No,
+The News Leader,News,1750,1-2 Weeks,"Virginia
+United States",No,
+Taunton Daily Gazette,News,1750,1-2 Weeks,"Massachusetts
+United States",No,
+Commercial Appeal,News,1750,1-2 Weeks,"Tennessee
+United States",No,
+Lubbock Avalanche-Journal,News,1750,1-2 Weeks,"Texas
+United States",No,
+Ithaca Journal,News,1750,1-2 Weeks,"New York
+United States",No,
+Springfield News Leader,6 genres,1750,1-2 Weeks,"Global
+Missouri",No,
+The Town Talk,News,1750,1-2 Weeks,"Louisiana
+United States",No,
+Post Crescent,News,1750,1-2 Weeks,"Wisconsin
+United States",No,
+Hattiesburg American,News,1750,1-2 Weeks,"Mississippi
+United States",No,
+Bustle,3 genres,1750,1-2 Weeks,"United States
+Global",No,
+Arizona Central,4 genres,1750,1-2 Weeks,"Arizona
+United States",No,
+"The Advocate
+New",News,1750,1 Week,Australia,Yes,
+"Northwest Star
+New",News,1750,1 Week,Australia,Yes,
+Daily News Journal,News,1750,1-2 Weeks,"Tennessee
+United States",No,
+Abilene Reporter News,News,1750,1-2 Weeks,"Texas
+United States",No,
+Zanesville Times Recorder,News,1750,1-2 Weeks,"Ohio
+United States",No,
+The Des Moines Register,News,1750,1-2 Weeks,"Iowa
+United States",No,
+Florida Today,News,1750,1-2 Weeks,"Florida
+United States",No,
+"Gulf News
+Press ReleaseRaised",News,1750,1-2 Weeks,UAE,Yes,
+Enterprise News,News,1750,1-2 Weeks,"Massachusetts
+United States",No,
+Wicked Local,News,1750,1-2 Weeks,Massachusetts,No,
+The Pueblo Chieftain,News,1750,1-2 Weeks,"Colorado
+United States",No,
+The News-Press,News,1750,1-2 Weeks,"Florida
+United States",No,
+The Journal News,News,1750,1-2 Weeks,"New York
+United States",No,
+"Queensland Country Life
+New",News,1750,1 Week,Australia,Yes,
+Delmarva Now,News,1750,1-2 Weeks,"Maryland
+Delaware
+United States",No,
+"Bordermail
+New",News,1750,1 Week,Australia,Yes,
+Rockford Register Star,News,1750,1-2 Weeks,"Illinois
+United States",No,
+The News Star,News,1750,1-2 Weeks,"Louisiana
+United States",No,
+Reno Gazette-Journal,News,1750,1-2 Weeks,"Nevada
+United States",No,
+Wichita Falls Times-Record-News,News,1750,1-2 Weeks,"Texas
+United States",No,
+Pocono Record,News,1750,1-2 Weeks,"Pennsylvania
+United States",No,
+Rolling Stone (UK),3 genres,1750,1-2 Weeks,United Kingdom,Yes,
+Lansing State Journal,News,1750,1-2 Weeks,"Michigan
+United States",No,
+The Zoe Report,3 genres,1750,1-2 Weeks,"United States
+Global",No,
+Kitsap Sun,News,1750,1-2 Weeks,"Washington State
+United States",No,
+Akron Beacon Journal,News,1750,1-2 Weeks,"Ohio
+United States",No,
+Fatherly,News,1750,1-2 Weeks,United States,No,
+Holland Sentinel,News,1750,1-2 Weeks,"Michigan
+United States",No,
+The Hutchinson News,News,1750,1-2 Weeks,"Kansas
+United States",No,
+Star Gazette,News,1750,1-2 Weeks,"New York
+United States",No,
+The Oklahoman,News,1750,1-2 Weeks,"Oklahoma
+United States",No,
+Nylon,3 genres,1750,1-2 Weeks,United States,No,
+Asbury Park Press,News,1750,1-2 Weeks,"New Jersey
+United States",No,
+Press Connects,News,1750,1-2 Weeks,"New York
+United States",No,
+"Armidale Express
+New",News,1750,1 Week,Australia,Yes,
+Courier & Press,News,1750,1-2 Weeks,"Indiana
+United States",No,
+The Register-Guard,News,1750,1-2 Weeks,"Oregon
+United States",No,
+Robb Report Mexico,3 genres,1750,1-2 Weeks,Mexico,No,
+"The Daily Advertiser
+New",News,1750,1 Week,Australia,Yes,
+Naples Daily News,News,1750,1-2 Weeks,"Florida
+United States",No,
+Alamogordo Daily News,News,1750,1-2 Weeks,"New Mexico
+United States",No,
+The Leaf Chronicle,News,1750,1-2 Weeks,"Tennessee
+United States",No,
+The Fayetteville Observer,News,1750,1-2 Weeks,"North Carolina
+United States",No,
+South Coast Today,News,1750,1-2 Weeks,"Massachusetts
+United States",No,
+The Star Press,News,1750,1-2 Weeks,"Indiana
+United States",No,
+Wausau Daily Herald,News,1750,1-2 Weeks,"Wisconsin
+United States",No,
+Fall River Herald News,News,1750,1-2 Weeks,"Massachusetts
+United States",No,
+Amarillo Globe-News,News,1750,1-2 Weeks,"Texas
+United States",No,
+South Jersey Courier Post,News,1750,1-2 Weeks,"New Jersey
+United States",No,
+Pensacola News Journal,News,1750,1-2 Weeks,"Florida
+United States",No,
+GoErie,News,1750,1-2 Weeks,"Pennsylvania
+United States",No,
+"The Leader
+New",News,1750,1 Week,Australia,Yes,
+"Southern Highland News
+New",News,1750,1 Week,Australia,Yes,
+Louisville News,News,1750,1-2 Weeks,"Kentucky
+United States",No,
+"Maitland Mercury
+New",News,1750,1 Week,Australia,Yes,
+Record Searchlight,News,1750,1-2 Weeks,"California
+United States",No,
+Beaver County Times,News,1750,1-2 Weeks,"Pennsylvania
+United States",No,
+Livingston Daily,News,1750,1-2 Weeks,"Michigan
+United States",No,
+Cincinnati News,News,1750,1-2 Weeks,"Ohio
+United States",No,
+"Illawarra Mercury
+New",News,1750,1 Week,Australia,Yes,
+"Elle India
+Staff",3 genres,1750,1 Week,"India
+Global",Yes,
+Chambersburg Public Opinion,News,1750,1-2 Weeks,"Pennsylvania
+United States",No,
+Visalia Times-Delta,News,1750,1-2 Weeks,"California
+United States",No,
+Mansfield News Journal,News,1750,1-2 Weeks,"Ohio
+United States",No,
+Florida Times-Union,News,1750,1-2 Weeks,"Florida
+United States",No,
+Caller Times,3 genres,1750,1-2 Weeks,"Texas
+United States",No,
+Burlington County Times,News,1750,1-2 Weeks,New Jersey,No,
+Inverse,3 genres,1750,1-2 Weeks,"United States
+Global",No,
+Mic,NewsLifestyle,1750,1-2 Weeks,United States,No,
+Elle Canada,4 genres,1750,2 Weeks,Canada,Yes,
+Phillyburbs,News,1750,1-2 Weeks,"Pennsylvania
+United States",No,
+The Coloradoan,News,1750,1-2 Weeks,"Colorado
+United States",No,
+Columbia Daily Herald,News,1750,1-2 Weeks,"Tennessee
+United States",No,
+Milwaukee Journal Sentinel,News,1750,1-2 Weeks,"Wisconsin
+United States",No,
+South Bend Tribune,News,1750,1-2 Weeks,"Indiana
+United States",No,
+Gaston Gazette,News,1750,1-2 Weeks,"North Carolina
+United States",No,
+Journal & Courier,News,1750,1-2 Weeks,"Indiana
+United States",No,
+Greenville Online,News,1750,1-2 Weeks,"South Carolina
+United States",No,
+Hanover Evening Sun,News,1750,1-2 Weeks,"Pennsylvania
+United States",No,
+Las Cruces Sun-News,News,1750,1-2 Weeks,"New Mexico
+United States",No,
+Lebanon Daily News,News,1750,1-2 Weeks,"Pennsylvania
+United States",No,
+"The Standard
+New",News,1750,1 Week,Australia,Yes,
+FDL Reporter,News,1750,1-2 Weeks,"Wisconsin
+United States",No,
+"Northern Daily Leader
+New",News,1750,1 Week,Australia,Yes,
+MetroWest Daily News,News,1750,1-2 Weeks,"Massachusetts
+United States",No,
+The Desert Sun,4 genres,1750,1-2 Weeks,"California
+United States",No,
+Sheboygan Press,News,1750,1-2 Weeks,"Wisconsin
+United States",No,
+"South Coast Register
+New",News,1750,1 Week,Australia,Yes,
+"The Courier
+New",News,1750,1 Week,Australia,Yes,
+Palmbeach Daily News,News,1750,1-2 Weeks,"Florida
+United States",No,
+Montgomery Advertiser,News,1750,1-2 Weeks,"Alabama
+United States",No,
+Houma Today,News,1750,1-2 Weeks,"Louisiana
+United States",No,
+Cape Cod Times,News,1750,1-2 Weeks,"Massachusetts
+United States",No,
+The Patriot Ledger,News,1750,1-2 Weeks,"Massachusetts
+United States",No,
+Milford Daily News,News,1750,1-2 Weeks,"Massachusetts
+United States",No,
+The State Journal-Register,News,1750,1-2 Weeks,"Illinois
+United States",No,
+GoSanAngelo,News,1750,1-2 Weeks,"Texas
+United States",No,
+ITP.live,3 genres,1750,1-2 Weeks,"UAE
+Middle East",No,
+Marie Claire Ukraine (+ IG Post),3 genres,1750,1 Week,Ukraine,Yes,
+The Gainesville Sun,News,1750,1-2 Weeks,"Florida
+United States",No,
+Scary Mommy,Lifestyle,1750,1-2 Weeks,"United States
+Global",No,
+Edge Middle East,NewsLuxury,1750,1-2 Weeks,"UAE
+Middle East",No,
+Treasure Coast News,News,1750,1-2 Weeks,"Florida
+United States",No,
+Sarasota Herald-Tribune,News,1750,1-2 Weeks,"Florida
+United States",No,
+North Jersey News,News,1750,1-2 Weeks,"New Jersey
+United States",No,
+Times Record,News,1750,1-2 Weeks,"Arkansas
+United States",No,
+Latin Times,4 genres,1820,1 Week,United States,Yes,
+Windsor Star,News,2100,4-6 Weeks,Canada,No,
+Canada.com,News,2100,4-6 Weeks,Canada,No,
+Tampa Bay Times,4 genres,2100,1 Week,"Florida
+United States",No,
+Rolling Stone (Australia),NewsEntertainment,2100,1 Week,Australia,Yes,
+HappySprout,Lifestyle,2100,1 Week,United States,No,
+The Music Network,Music,2100,1 Week,Australia,Yes,
+Forbes Israel,News,2100,1-2 Weeks,Israel,Yes,
+IGN (Nordic),GamingEntertainment,2100,3-5 Days,Europe,No,
+Toronto Sun,News,2100,4-6 Weeks,Canada,No,
+Vancouver Sun,News,2100,4-6 Weeks,Canada,No,
+Blissmark,Lifestyle,2100,1 Week,United States,No,
+Cineserie,Entertainment,2100,1 Week,France,Yes,
+"Newsweek
+Contributor",3 genres,2100,8-12 Weeks,United States,No,
+Wonderland Magazine,MusicFashion,2100,1-2 Weeks,Global,No,
+The Province,News,2100,4-6 Weeks,Canada,No,
+"Bitcoin.com
+Press Release",Web 3,2100,3 Days,Global,No,
+Independent.co.uk,News,2100,2 Weeks,United Kingdom,No,
+Grazia Magazine,4 genres,2100,1-2 Weeks,"Middle East
+UAE",No,
+Montreal Gazette,News,2100,4-6 Weeks,Canada,No,
+Masala,3 genres,2100,1-2 Weeks,"UAE
+Middle East",No,
+Variety (Australia),NewsEntertainment,2100,1 Week,Australia,Yes,
+Investing.com,3 genres,2100,1-2 Weeks,United States,No,
+The Star Phoenix,News,2100,4-6 Weeks,Canada,No,
+Construction Week Online,News,2100,1-2 Weeks,"UAE
+Middle East",No,
+21 Oak,News,2100,1 Week,United States,No,
+Edmonton Journal,News,2100,4-6 Weeks,Canada,No,
+Arabian Business,NewsBusiness,2100,1-2 Weeks,"UAE
+Middle East",No,
+Ottawa Citizen,News,2100,4-6 Weeks,Canada,No,
+Canoe.com,News,2100,4-6 Weeks,Canada,No,
+"Sports Illustrated
+Contributor",3 genres,2100,2-3 Weeks,United States,Yes,
+The Big Lead,NewsSports,2100,1-2 Weeks,United States,Yes,
+The Brag (Australia),News,2100,1 Week,Australia,Yes,
+Edmonton Sun,News,2100,4-6 Weeks,Canada,No,
+Tone Deaf (Australia),NewsEntertainment,2100,1 Week,Australia,Yes,
+Harper's Bazaar Arabia,4 genres,2100,1-2 Weeks,"UAE
+Middle East",No,
+Ottawa Sun,News,2100,4-6 Weeks,Canada,No,
+IB Times (NA),NewsBusiness,2100,1 Week,United States,No,
+Leader Post,News,2100,4-6 Weeks,Canada,No,
+Calgary Sun,News,2100,4-6 Weeks,Canada,No,
+Watch Pro,NewsLuxury,2100,1-2 Weeks,"UAE
+Middle East",No,
+National Post,News,2100,4-6 Weeks,Canada,No,
+PawTracks,Lifestyle,2100,1 Week,United States,No,
+Esquire Middle East,News,2100,1-2 Weeks,"UAE
+Middle East",No,
+Perez Hilton,NewsEntertainment,2100,1-2 Weeks,United States,Yes,
+NewFolks,News,2100,1 Week,United States,No,
+Cosmopolitan Middle East,4 genres,2100,1-2 Weeks,"UAE
+Middle East",No,
+Calgary Herald,News,2100,4-6 Weeks,Canada,No,
+"LA Times (Sponsored)
+Lowered",News,2100,2-4 Weeks,"California
+United States",No,
+CEO Middle East,4 genres,2100,1-2 Weeks,"UAE
+Middle East",No,
+Tough Jobs,News,2100,1 Week,United States,No,
+Financial Post,News,2100,4-6 Weeks,Canada,No,
+Medical Daily,NewsBusiness,2100,1 Week,Global,No,
+"The Canberra Times
+New",News,2100,1 Week,Australia,Yes,
+Galore Magazine + IG Story,4 genres,2450,3-5 Days,United States,Yes,
+Village Voice (DO-FOLLOW),5 genres,2450,1 Day,"New York
+United States",Yes,
+Digital Trends,3 genres,2450,1-2 Weeks,United States,No,
+The Manual,LifestyleNews,2450,1 Week,United States,Yes,
+LA Weekly (DO-FOLLOW),6 genres,2450,1 Day,"California
+United States",Yes,
+Clash Music,Music,2450,2-3 Weeks,United States,Yes,
+Bust Magazine (DO-FOLLOW),5 genres,2450,1 Day,Global,Yes,
+Irvine Weekly (DO-FOLLOW),Lifestyle,2450,1 Day,"California
+United States",Yes,
+Organic Coverage (NY Post / The Sun / The Mirror / Daily Star / Daily Mirror / The Express / Daily Mail),News,2520,3-4 Weeks,"United Kingdom
+Global",No,
+DailyTimes.com,News,2800,1-5 Days,"United States
+Texas",Yes,
+Herald-Zeitung.com,News,2800,1-5 Days,"Texas
+United States",Yes,
+"PC World
+NewPress Release",NewsTech,2800,3-5 Days,United States,No,
+"CIO
+NewPress Release",News,2800,3-5 Days,United States,No,
+"Muscle & Fitness (Includes Social Post)
+Includes Social Posts",3 genres,2800,1 Week,United States,Yes,
+"Computer World
+NewPress Release",NewsTech,2800,3-5 Days,United States,Yes,
+BaytownSun.com,News,2800,1-5 Days,"United States
+Texas",Yes,
+"Tech Hive
+NewPress Release",NewsTech,2800,3-5 Days,United States,No,
+"CIO.com (Mention)
+Contributor",News,2800,4-8 Weeks,United States,No,
+SeguinGazette.com,News,2800,1-5 Days,"United States
+Texas",Yes,
+"Info World
+NewPress Release",News,2800,3-5 Days,United States,No,
+TheParisNews.com,News,2800,1-5 Days,"United States
+Texas",Yes,
+"Mac World
+NewPress Release",NewsTech,2800,3-5 Days,United States,No,
+"Tech Advisor
+NewPress Release",NewsTech,2800,3-5 Days,United States,No,
+Paper Mag,NewsEntertainment,2800,1-3 Days,United States,No,
+Baycity Tribune,News,2800,1-5 Days,"United States
+Texas",Yes,
+LufkinDailyNews.com,News,2800,1-5 Days,"Texas
+United States",Yes,
+SwokNews.com,News,2800,1-5 Days,"Oklahoma
+United States",Yes,
+Galvnews.com,News,2800,1-5 Days,"Texas
+United States",Yes,
+TheFacts.com,News,2800,1-5 Days,"United States
+Texas",Yes,
+"Network World
+NewPress Release",NewsTech,2800,3-5 Days,United States,No,
+USA Today,6 genres,2800,1-2 Weeks,Global,No,
+Geekwire,TechBusiness,2800,3-5 Days,Global,No,
+"CSO
+NewPress Release",News,2800,3-5 Days,United States,Yes,
+BizJournals.com (Dallas),NewsBusiness,3150,1-2 Weeks,"United States
+Texas",No,
+Entrepreneur (Asia Pacific),5 genres,3150,1-2 Weeks,Asia Pacific,Yes,
+"Inman.com
+Contributor",Real Estate,3150,2-3 Weeks,United States,No,
+BizJournals.com (New York),NewsBusiness,3150,1-2 Weeks,"United States
+New York",No,
+BizJournals.com (Los Angeles),NewsBusiness,3150,1-2 Weeks,"United States
+Los Angeles",No,
+"Thrive Global (Mention + Quote)
+Contributor",News,3150,2-4 Weeks,United States,Yes,
+BizJournals.com (Chicago),NewsBusiness,3150,1-2 Weeks,"United States
+Illinois",No,
+BizJournals.com (Miami),NewsBusiness,3150,1-2 Weeks,"United States
+Florida",No,
+GamesBeat,Gaming,3500,1-2 Weeks,United States,Yes,
+"Consequence.net
+Staff",Music,3500,1 Week,"New York
+United States",No,
+Maxim Full Feature,7 genres,3500,1 - 3 Weeks,"New York
+United States",No,
+Venture Beat,4 genres,3500,1 Week,Global,Yes,
+Bitcoin.com (Sponsored),Web 3,3500,3 Days,Global,Yes,
+Life Without Andy,News,4200,1 Week,Australia,Yes,
+"USA Today (50,000 Impressions)
+Guaranteed Impressions",News,4200,2-4 Weeks,United States,No,
+Saudia Gazette,News,4200,1 Week,"UAE
+Middle East",No,
+The Epoch Times,News,4200,1-2 Weeks,United States,No,
+Music Feeds,Music,4200,1 Week,Australia,Yes,
+"Radar Online + Social Post
+Staff",Entertainment,4200,3-5 Days,"Global
+United States",Yes,
+"OK! Magazine + Social Post
+Staff",Entertainment,4200,3-5 Days,"Global
+United States",Yes,
+Forbes Australia,4 genres,4900,3-4 Weeks,Australia,Yes,
+Paper Mag (DO-FOLLOW),NewsEntertainment,4900,1-3 Days,United States,Yes,
+US Weekly,5 genres,4900,1-3 Weeks,"Global
+United States",No,
+WWD,5 genres,5600,1-2 Weeks,United States,No,
+Sourcing Journal,4 genres,5600,1-2 Weeks,United States,Yes,
+"USA Today (100,000 Impressions)
+Guaranteed Impressions",News,5600,2-4 Weeks,United States,No,
+Calendar.com (Syndicates to Entrepreneur.com),News,5600,1 Week,United States,Yes,
+Robb Report (Italy),3 genres,5600,2-3 Weeks,Italy,Yes,
+"Due.com (Syndicates to Entrepreneur, Nasdaq & MSN)",NewsBusiness,5600,1 Week,United States,Yes,
+Foot Wear News,3 genres,5600,1-2 Weeks,Global,Yes,
+"Radar Online (Homepage 4 Weeks)
+Staff",4 genres,6300,1 Week,United States,Yes,
+"OK! Magazine (Homepage 4 Weeks)
+Staff",5 genres,6300,3-5 Days,"Global
+United States",Yes,
+Vogue (Ukraine),3 genres,6300,1-2 Weeks,Ukraine,Yes,
+The Real Deal,3 genres,7000,1-2 Weeks,United States,No,
+"Elle (UK)
+New",NewsFashion,7000,1-3 Weeks,United Kingdom,No,
+"Forbes (Italy)
+Staff",News,7700,2-3 Weeks,Italy,Yes,
+"USA Today (250,000 Impressions)
+Guaranteed Impressions",News,8400,2-4 Weeks,United States,No,
+Time.com,News,9100,2-4 Weeks,United States,No,
+Hypebae (Australia),3 genres,10500,1 Week,Australia,Yes,
+Hypebeast (Australia),3 genres,10500,1 Week,Australia,Yes,
+Coindesk,3 genres,14000,1-2 Weeks,"New York
+Global",No,
+"Variety (400,000 Impressions)
+Guaranteed Impressions",4 genres,14000,1-2 Weeks,Global,No,
+"Rolling Stone (400,000 Impressions)
+Guaranteed Impressions",MusicEntertainment,17500,1-2 Weeks,United States,No,
+The Hollywood Reporter,News,17500,1-2 Weeks,"California
+United States",No,
+"Tech Crunch
+Includes Social Posts",3 genres,42000,2-3 Weeks,Global,No,
+"Wall Street Journal (500,000 Impressions)",NewsBusiness,119000,3-4 Weeks,United States,No,
+Bloomberg,News,140000,1 Month,United States,Yes,

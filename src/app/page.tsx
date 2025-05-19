@@ -20,9 +20,10 @@ export default function Page() {
       {/* Header */}
       <header style={styles.header}>
         <img src="vercel.svg" alt="Logo" style={styles.logo} />
-        <button style={styles.logoutButton} className="logout-hover">
-          Logout
-        </button>
+          <button style={styles.logoutButton} className="logout-hover">
+            Logout
+          </button>
+          <div className="logout-popup">😢 Tussi ja rhe hoo?</div>
       </header>
 
       {/* Content Wrapper */}
@@ -120,7 +121,7 @@ const styles = {
   logoutButton: {
     marginLeft: 'auto',
     padding: '0.5rem 1rem',
-    backgroundColor: '#ef4444',
+    backgroundColor: '#1e3a8a',
     border: 'none',
     borderRadius: '4px',
     color: '#fff',
@@ -231,5 +232,26 @@ tbody tr:hover {
 .logout-hover:hover {
   transform: scale(1.1);
   background-color: #dc2626;
+}
+
+/* Tooltip animation */
+.logout-popup {
+  display: none;
+  position: absolute;
+  top: 130%;
+  right: 0;
+  background-color: #ffffff;
+  color: #1e3a8a;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease-out;
+  white-space: nowrap;
+  z-index: 999;
+}
+
+.logout-hover:hover + .logout-popup {
+  display: block;
 }
 `
