@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react';
 
-// Function to format headers into a readable format (e.g., 'name' to 'Name')
+
 const formatHeader = (header) => {
   return header
-    .split('_') // Split by underscores
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-    .join(' '); // Join words with spaces
+    .split('_') 
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
+    .join(' '); 
 };
 
 export default function Page() {
@@ -29,12 +29,12 @@ export default function Page() {
     const maxMatch = filters.maxPrice === '' || price <= parseFloat(filters.maxPrice);
     const regionMatch =
       filters.region === '' ||
-      new RegExp(filters.region, 'i').test(item.regions); // updated line
+      new RegExp(filters.region, 'i').test(item.regions);
   
     return pubMatch && price >= 0 && maxMatch && regionMatch;
   });
   
-  console.log(filteredData); // Log filtered data to check its structure
+  console.log(filteredData); 
 
   return (
     <div style={styles.page}>
@@ -192,7 +192,6 @@ export default function Page() {
   );
 }
 
-// Your existing styles
 const styles = {
   page: { fontFamily: 'Arial, sans-serif', backgroundColor: '#f9fafb', minHeight: '100vh', display: 'flex', flexDirection: 'column' as const },
   header: {
@@ -233,7 +232,7 @@ const styles = {
     boxShadow: '2px 0 8px rgba(0,0,0,0.05)',
     height: '100vh',
     position: 'sticky',
-    top: '80px', // adjust if your header is taller
+    top: '80px',
     overflowY: 'auto',
   },
   filterGroup: { marginBottom: '1.5rem', display: 'flex', flexDirection: 'column' as const, gap: '0.5rem' },
@@ -265,7 +264,7 @@ const animationStyles = `
 }
 
 tbody tr:hover {
-  background-color: rgb(147, 156, 173);
+  background-color: rgb(203, 207, 214);
 }
 
 .logout-hover:hover {
