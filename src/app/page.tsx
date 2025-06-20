@@ -2,39 +2,111 @@
 
 import { useEffect, useState } from 'react';
 
-// Function to format headers into a readable format (e.g., 'name' to 'Name')
 const formatHeader = (header) => {
   return header
-    .split('_') // Split by underscores
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-    .join(' '); // Join words with spaces
+    .split('_') 
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
+    .join(' '); 
 };
 
 export default function Page() {
   const [data, setData] = useState([]);
-  const [filters, setFilters] = useState({ publication: '', minPrice: '', maxPrice: '', region: '' });
-
-  useEffect(() => {
-    fetch('/api/data')
-      .then((res) => res.json())
-      .then((fetchedData) => {
-        console.log(fetchedData);
-        setData(fetchedData);
-      });
-  }, []);
-
-  const filteredData = data.filter((item) => {
-    const pubMatch = item.name?.toLowerCase().includes(filters.publication.toLowerCase());
-    const price = item.price;
-    const maxMatch = filters.maxPrice === '' || price <= parseFloat(filters.maxPrice);
-    const regionMatch =
-      filters.region === '' ||
-      new RegExp(filters.region, 'i').test(item.regions); // updated line
-  
-    return pubMatch && price >= 0 && maxMatch && regionMatch;
+  const [filters, setFilters] = useState({ 
+    publication: { search: '', minPrice: '', maxPrice: '', region: '' },
+    television: { search: '' }, 
+    broadcast_television: { callSign: '' } 
   });
   
-  console.log(filteredData); // Log filtered data to check its structure
+  const [activeTable, setActiveTable] = useState('publication');
+  const [loading, setLoading] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check screen size
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  // Function to fetch data based on table type
+  const fetchData = async (tableType) => {
+    setLoading(true);
+    try {
+      let endpoint;
+      switch (tableType) {
+        case 'publication':
+          endpoint = '/api/data';
+          break;
+        case 'television':
+          endpoint = '/api/television';
+          break;
+        case 'broadcast_television':
+          endpoint = '/api/broadcast_television';
+          break;
+        default:
+          endpoint = '/api/data';
+      }
+      
+      const res = await fetch(endpoint);
+      const fetchedData = await res.json();
+      
+      setData(fetchedData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setData([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(activeTable);
+  }, [activeTable]);
+
+  // Handle table switch
+  const handleTableSwitch = (tableType) => {
+    setActiveTable(tableType);
+    if (isMobile) setSidebarOpen(false);
+  };
+
+  // Get current filters based on active table
+  const currentFilters = filters[activeTable];
+
+  // Update filters for current table
+  const updateFilters = (newFilters) => {
+    setFilters(prev => ({
+      ...prev,
+      [activeTable]: { ...prev[activeTable], ...newFilters }
+    }));
+  };
+
+  const filteredData = data.filter((item) => {
+    if (activeTable === 'publication') {
+      const searchMatch = item.name?.toLowerCase().includes(currentFilters.search?.toLowerCase() || '');
+      const price = item.price || 0;
+      const minMatch = currentFilters.minPrice === '' || price >= parseFloat(currentFilters.minPrice || 0);
+      const maxMatch = currentFilters.maxPrice === '' || price <= parseFloat(currentFilters.maxPrice || 100000);
+      const regionMatch = currentFilters.region === '' || 
+        new RegExp(currentFilters.region, 'i').test(item.regions || '');
+      return searchMatch && minMatch && maxMatch && regionMatch;
+    } else if (activeTable === 'television') {
+      // Television: Only filter by Calls column using the search filter
+      return item.call?.toLowerCase().includes((currentFilters.search || '').toLowerCase());
+    } else if (activeTable === 'broadcast_television') {
+      return item.CallSign?.toLowerCase().includes((currentFilters.CallSign || '').toLowerCase());
+    }
+    return true;
+  });
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   return (
     <div style={styles.page}>
@@ -42,143 +114,280 @@ export default function Page() {
 
       {/* Header */}
       <header style={styles.header}>
-        <img src="https://pricing.ascendagency.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F8n90kyzz%2Fproduction%2F2d6f32c86f9c769c3657299a40ee3dba591af66d-1200x1200.png%3Fw%3D100%26h%3D100&w=256&q=75" alt="Logo" style={styles.logo} />
+        <div style={styles.headerLeft}>
+          <img src="https://pricing.ascendagency.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F8n90kyzz%2Fproduction%2F2d6f32c86f9c769c3657299a40ee3dba591af66d-1200x1200.png%3Fw%3D100%26h%3D100&w=256&q=75" alt="Logo" style={styles.logo} />
+          {isMobile && (
+            <button 
+              style={styles.mobileMenuButton}
+              onClick={toggleSidebar}
+              className="mobile-menu-hover"
+            >
+              🔍 Filters
+            </button>
+          )}
+        </div>
         <button style={styles.logoutButton} className="logout-hover">Logout</button>
         <div className="logout-popup">😢 Tussi ja rhe hoo?</div>
       </header>
 
+      {/* Navigation Section */}
+      <nav style={styles.navigation}>
+        <div style={styles.navTabs}>
+          <button
+            style={{
+              ...styles.navTab,
+              ...(activeTable === 'publication' ? styles.activeTab : {})
+            }}
+            data-active={activeTable === 'publication'}
+            onClick={() => handleTableSwitch('publication')}
+            className="nav-tab"
+          >
+            📰 Publications
+          </button>
+          <button
+            style={{
+              ...styles.navTab,
+              ...(activeTable === 'television' ? styles.activeTab : {})
+            }}
+            data-active={activeTable === 'television'}
+            onClick={() => handleTableSwitch('television')}
+            className="nav-tab"
+          >
+            📺 Television
+          </button>
+          <button
+            style={{
+              ...styles.navTab,
+              ...(activeTable === 'broadcast_television' ? styles.activeTab : {})
+            }}
+            data-active={activeTable === 'broadcast_television'}
+            onClick={() => handleTableSwitch('broadcast_television')}
+            className="nav-tab"
+          >
+            📡 Broadcast TV
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Sidebar Overlay */}
+      {isMobile && sidebarOpen && (
+        <div style={styles.overlay} onClick={() => setSidebarOpen(false)} />
+      )}
+
       {/* Content */}
       <div style={styles.contentWrapper}>
-        <aside style={styles.sidebar}>
-          <h3>🔍 Filters</h3>
-
-          <div style={styles.filterGroup}>
-            <label>Publication:</label>
-            <input
-              type="text"
-              style={styles.input}
-              onChange={(e) => setFilters({ ...filters, publication: e.target.value })}
-            />
+        {/* Sidebar */}
+        <aside 
+          style={{
+            ...styles.sidebar,
+            ...(isMobile ? {
+              ...styles.mobileSidebar,
+              transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)'
+            } : {})
+          }}
+        >
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <div style={styles.sidebarHeader}>
+              <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '700' }}>🔍 Filters</h3>
+              {isMobile && (
+                <button 
+                  style={styles.closeSidebar}
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+            <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.9rem', opacity: 0.8 }}>
+              Refine your {activeTable.replace('_', ' ')} search
+            </p>
           </div>
 
-          <div style={styles.filterGroup}>
-            <label>Price Range: 0 - {filters.maxPrice || 100000}</label>
-            <input
-              type="range"
-              min="0"
-              max="100000"
-              step="100"
-              value={filters.maxPrice || 100000}
-              onChange={(e) => setFilters({ ...filters, maxPrice: e.target.value })}
-              style={styles.slider}
-            />
-          </div>
+          {activeTable === 'publication' ? (
+            <>
+              {/* Publication filters */}
+              <div style={styles.filterGroup}>
+                <label style={styles.filterLabel}>Search:</label>
+                <input
+                  type="text"
+                  style={styles.input}
+                  placeholder="Search publications..."
+                  value={currentFilters.search || ''}
+                  onChange={(e) => updateFilters({ search: e.target.value })}
+                />
+              </div>
 
+              <div style={styles.filterGroup}>
+                <label style={styles.filterLabel}>Min Price:</label>
+                <input
+                  type="number"
+                  style={styles.input}
+                  placeholder="Min Price"
+                  value={currentFilters.minPrice || ''}
+                  onChange={(e) => updateFilters({ minPrice: e.target.value })}
+                />
+              </div>
+
+              <div style={styles.filterGroup}>
+                <label style={styles.filterLabel}>
+                  Max Price: ${currentFilters.maxPrice || 100000}
+                </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="100000"
+                  step="100"
+                  value={currentFilters.maxPrice || 100000}
+                  onChange={(e) => updateFilters({ maxPrice: e.target.value })}
+                  style={styles.slider}
+                />
+              </div>
+
+              <div style={styles.filterGroup}>
+                <label style={styles.filterLabel}>Region:</label>
+                <input
+                  type="text"
+                  style={styles.input}
+                  placeholder="Region"
+                  value={currentFilters.region || ''}
+                  onChange={(e) => updateFilters({ region: e.target.value })}
+                />
+              </div>
+            </>
+          ) : activeTable === 'television' ? (
+            <>
+              {/* Television filters - Only search calls */}
+              <div style={styles.filterGroup}>
+                <label style={styles.filterLabel}>Search Calls:</label>
+                <input
+                  type="text"
+                  style={styles.input}
+                  placeholder="Search calls..."
+                  value={currentFilters.search || ''}
+                  onChange={(e) => updateFilters({ search: e.target.value })}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Broadcast Television filters - Only callsign */}
+              <div style={styles.filterGroup}>
+                <label style={styles.filterLabel}>Search Callsign:</label>
+                <input
+                  type="text"
+                  style={styles.input}
+                  placeholder="Search callsign..."
+                  value={currentFilters.callsign || ''}
+                  onChange={(e) => updateFilters({ callsign: e.target.value })}
+                />
+              </div>
+            </>
+          )}
+
+          {/* Clear Filters Button */}
           <div style={styles.filterGroup}>
-            <label>Region:</label>
-            <select
-              style={styles.input}
-              onChange={(e) => setFilters({ ...filters, region: e.target.value })}
+            <button
+              style={styles.clearButton}
+              className="clear-button"
+              onClick={() => {
+                if (activeTable === 'publication') {
+                  updateFilters({ search: '', minPrice: '', maxPrice: '', region: '' });
+                } else if (activeTable === 'television') {
+                  updateFilters({ search: '' });
+                } else if (activeTable === 'broadcast_television') {
+                  updateFilters({ callsign: '' });
+                }
+              }}
             >
-              <option value="">Any</option>
-              <option value="Global">Global</option>
-              <option value="Canada">Canada</option>
-              <option value="Australia">Australia</option>
-              <option value="United States">United States</option>
-              <option value="Louisiana">Louisiana</option>
-              <option value="South Carolina">South Carolina</option>
-              <option value="India">India</option>
-              <option value="Montana">Montana</option>
-              <option value="Texas">Texas</option>
-              <option value="United Kingdom">United Kingdom</option>
-              <option value="Virginia">Virginia</option>
-              <option value="Tennessee">Tennessee</option>
-              <option value="Florida">Florida</option>
-              <option value="Wisconsin">Wisconsin</option>
-              <option value="Turkey">Turkey</option>
-              <option value="Oregon">Oregon</option>
-              <option value="Minnesota">Minnesota</option>
-              <option value="Idaho">Idaho</option>
-              <option value="Delaware">Delaware</option>
-              <option value="Ghana">Ghana</option>
-              <option value="Arizona">Arizona</option>
-            </select>
+              🗑️ Clear Filters
+            </button>
           </div>
         </aside>
 
         <main style={styles.container}>
-          <div style={styles.tableWrapper}>
-          <table style={styles.table} className="fade-in">
-           <thead>
-              <tr>
-                {filteredData[0] && Object.keys(filteredData[0]).map((header) =>
-                  header !== 'url' && header !== 'logo' && (
-                    <th key={header} style={styles.headerCell}>
-                      {formatHeader(header)}
-                    </th>
-                  )
-                )}
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData.length > 0 ? (
-                filteredData.map((row, idx) => (
-                  <tr key={idx} style={styles.row}>
-                    {Object.keys(row).map((key, i) => {
-                      if (key === 'url' || key === 'logo') return null;
+          {loading ? (
+            <div style={styles.loadingContainer}>
+              <div style={styles.spinner}></div>
+              <p>Loading {activeTable.replace('_', ' ')} data...</p>
+            </div>
+          ) : (
+            <div style={styles.tableContainer}>
+              <div style={styles.tableWrapper}>
+                <table style={styles.table} className="fade-in">
+                  <thead>
+                    <tr>
+                      {filteredData[0] && Object.keys(filteredData[0]).map((header) =>
+                        header !== 'url' && header !== 'logo' && (
+                          <th key={header} style={styles.headerCell}>
+                            {formatHeader(header)}
+                          </th>
+                        )
+                      )}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredData.length > 0 ? (
+                      filteredData.map((row, idx) => (
+                        <tr key={idx} style={styles.row}>
+                          {Object.keys(row).map((key, i) => {
+                            if (key === 'url' || key === 'logo') return null;
 
-                      if (key === 'example' && row.example) {
-                        return (
-                          <td key={i} style={styles.cell}>
-                            <a
-                              href={`https://cdn.sanity.io/images/8n90kyzz/production/${row.example}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{ display: 'inline-block' }}
-                            >
-                              <img
-                                src="/picture.png"
-                                alt="example"
-                                style={{ width: 40, height: 40, borderRadius: '4px', objectFit: 'cover' }}
-                              />
-                            </a>
-                          </td>
-                        );
-                      }
+                            if (key === 'example' && row.example) {
+                              return (
+                                <td key={i} style={styles.cell}>
+                                  <a
+                                    href={`https://cdn.sanity.io/images/8n90kyzz/production/${row.example}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ display: 'inline-block' }}
+                                  >
+                                    <img
+                                      src="/picture.png"
+                                      alt="example"
+                                      style={{ width: 40, height: 40, borderRadius: '4px', objectFit: 'cover' }}
+                                    />
+                                  </a>
+                                </td>
+                              );
+                            }
 
-                      return (
-                        <td key={i} style={styles.cell}>
-                          {key === 'name' && row.url ? (
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                              {row.logo && (
-                                <img
-                                  src={`https://cdn.sanity.io/images/8n90kyzz/production/${row.logo}`}
-                                  alt="logo"
-                                  style={{ width: 30, height: 30, borderRadius: '2px', objectFit: 'cover' }}
-                                />
-                              )}
-                              <a href={row.url} target="_blank" rel="noopener noreferrer" style={styles.link}>
-                                {row[key]}
-                              </a>
-                            </div>
-                          ) : (
-                            row[key]
-                          )}
+                            return (
+                              <td key={i} style={styles.cell}>
+                                {key === 'name' && row.url ? (
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: '200px' }}>
+                                    {row.logo && (
+                                      <img
+                                        src={`https://cdn.sanity.io/images/8n90kyzz/production/${row.logo}`}
+                                        alt="logo"
+                                        style={{ width: 30, height: 30, borderRadius: '2px', objectFit: 'cover', flexShrink: 0 }}
+                                      />
+                                    )}
+                                    <a href={row.url} target="_blank" rel="noopener noreferrer" style={styles.link}>
+                                      {row[key]}
+                                    </a>
+                                  </div>
+                                ) : (
+                                  <div style={{ minWidth: key === 'name' ? '200px' : '120px', wordBreak: 'break-word' }}>
+                                    {row[key]}
+                                  </div>
+                                )}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={Object.keys(filteredData[0] || {}).length} style={styles.cell}>
+                          No {activeTable.replace('_', ' ')} data available
                         </td>
-                      );
-                    })}
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan={Object.keys(filteredData[0] || {}).length} style={styles.cell}>
-                    No data available
-                  </td>
-                </tr>
-              )}
-            </tbody>
-            </table>
-          </div>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </main>
       </div>
 
@@ -192,24 +401,48 @@ export default function Page() {
   );
 }
 
-// Your existing styles
 const styles = {
-  page: { fontFamily: 'Arial, sans-serif', backgroundColor: '#f9fafb', minHeight: '100vh', display: 'flex', flexDirection: 'column' as const },
+  page: { 
+    fontFamily: 'Arial, sans-serif', 
+    backgroundColor: '#f9fafb', 
+    minHeight: '100vh', 
+    display: 'flex', 
+    flexDirection: 'column' as const,
+    position: 'relative' as const
+  },
   header: {
     display: 'flex',
-    flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '1rem 2rem',
     backgroundColor: '#1e3a8a',
     color: 'white',
-    position: 'sticky',
+    position: 'sticky' as const,
     top: 0,
-    zIndex: 10,
+    zIndex: 100,
+    flexWrap: 'wrap' as const,
+    gap: '1rem',
+  },
+  headerLeft: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
   },
   logo: {
     height: 40,
-    marginBottom: '0.5rem',
+    flexShrink: 0,
+  },
+  mobileMenuButton: {
+    padding: '0.5rem 1rem',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+    borderRadius: '6px',
+    color: '#fff',
+    fontSize: '0.9rem',
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    backdropFilter: 'blur(10px)',
   },
   logoutButton: {
     padding: '0.5rem 1rem',
@@ -221,37 +454,255 @@ const styles = {
     fontWeight: 'bold',
     cursor: 'pointer',
     transition: 'transform 0.2s ease, background-color 0.2s ease',
-    whiteSpace: 'nowrap',
+    whiteSpace: 'nowrap' as const,
   },
-  contentWrapper: { display: 'flex', flex: 1 },
+  overlay: {
+    position: 'fixed' as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    zIndex: 50,
+    backdropFilter: 'blur(4px)',
+  },
+  navigation: {
+    backgroundColor: '#ffffff',
+    borderBottom: '2px solid #e5e7eb',
+    padding: '1rem 2rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+    position: 'sticky' as const,
+    top: '72px',
+    zIndex: 90,
+    overflowX: 'auto' as const,
+  },
+  navTabs: {
+    display: 'flex',
+    gap: '0.5rem',
+    minWidth: 'fit-content',
+  },
+  navTab: {
+    padding: '0.75rem 1.5rem',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: '#e5e7eb',
+    borderRadius: '8px',
+    backgroundColor: '#ffffff',
+    color: '#6b7280',
+    fontSize: '1rem',
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    outline: 'none',
+    whiteSpace: 'nowrap' as const,
+  },
+  activeTab: {
+    backgroundColor: '#1e3a8a',
+    color: '#ffffff',
+    borderColor: '#1e3a8a',
+    transform: 'translateY(-2px)',
+    boxShadow: '0 4px 12px rgba(30, 58, 138, 0.3)',
+  },
+  contentWrapper: { 
+    display: 'flex', 
+    flex: 1, 
+    position: 'relative' as const,
+    overflow: 'hidden' as const,
+  },
   sidebar: {
-    width: '250px',
-    padding: '1.5rem',
-    backgroundColor: '#1d3461',
+    width: '300px',
+    padding: '2rem',
+    background: 'linear-gradient(135deg, #1e3a8a 0%, #1d3461 100%)',
     color: '#fff',
     borderRight: '1px solid #e5e7eb',
-    boxShadow: '2px 0 8px rgba(0,0,0,0.05)',
-    height: '100vh',
-    position: 'sticky',
-    top: '80px', // adjust if your header is taller
-    overflowY: 'auto',
+    boxShadow: '4px 0 16px rgba(0,0,0,0.1)',
+    height: 'calc(100vh - 144px)',
+    position: 'sticky' as const,
+    top: '144px',
+    overflowY: 'auto' as const,
+    transition: 'all 0.3s ease',
+    flexShrink: 0,
   },
-  filterGroup: { marginBottom: '1.5rem', display: 'flex', flexDirection: 'column' as const, gap: '0.5rem' },
-  input: { padding: '0.5rem', borderRadius: '4px', border: '1px solid #d1d5db' },
-  container: { flex: 1, padding: '2rem' },
-  tableWrapper: { overflowX: 'auto', borderRadius: '8px', boxShadow: '0 0 20px rgba(0,0,0,0.05)' },
-  table: { width: '100%', minWidth: 600, borderCollapse: 'collapse' as const, backgroundColor: '#fff', animation: 'fadeIn 0.7s ease-out' },
-  headerCell: { padding: '1rem', backgroundColor: '#1e3a8a', color: '#fff', textAlign: 'left' as const, position: 'sticky', top: 0, zIndex: 1 },
-  row: { transition: 'background-color 0.3s', cursor: 'pointer' },
-  cell: { padding: '0.75rem 1rem', borderBottom: '1px solid #e5e7eb', color: '#333' },
-  footer: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 2rem', backgroundColor: '#1e3a8a', color: '#ffffff' },
+  mobileSidebar: {
+    position: 'fixed' as const,
+    top: '144px',
+    left: 0,
+    height: 'calc(100vh - 144px)',
+    zIndex: 60,
+    transform: 'translateX(-100%)',
+    width: '280px',
+  },
+  sidebarHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
+  closeSidebar: {
+    background: 'rgba(255, 255, 255, 0.2)',
+    border: 'none',
+    color: '#fff',
+    fontSize: '1.2rem',
+    padding: '0.25rem 0.5rem',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    transition: 'background 0.2s ease',
+  },
+  filterGroup: { 
+    marginBottom: '2rem', 
+    display: 'flex', 
+    flexDirection: 'column' as const, 
+    gap: '0.75rem',
+    padding: '1rem',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '8px',
+    backdropFilter: 'blur(10px)',
+  },
+  filterLabel: {
+    fontWeight: '600',
+    fontSize: '0.95rem',
+    marginBottom: '0.25rem',
+    display: 'block',
+  },
+  input: { 
+    padding: '0.75rem', 
+    borderRadius: '8px', 
+    border: '2px solid #e5e7eb',
+    fontSize: '1rem',
+    transition: 'all 0.2s ease',
+    outline: 'none',
+    width: '100%',
+    boxSizing: 'border-box' as const,
+  },
+  container: { 
+    flex: 1, 
+    padding: '2rem',
+    background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+    minHeight: 'calc(100vh - 144px)',
+    overflow: 'hidden' as const,
+  },
+  tableContainer: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column' as const,
+  },
+  tableWrapper: { 
+    flex: 1,
+    overflowX: 'auto' as const,
+    overflowY: 'auto' as const,
+    borderRadius: '12px', 
+    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+    border: '1px solid #e2e8f0',
+    backgroundColor: '#fff',
+    maxHeight: 'calc(100vh - 200px)'
+  },
+  table: { 
+    width: '100%', 
+    minWidth: '600px',
+    borderCollapse: 'collapse' as const, 
+    backgroundColor: '#fff', 
+    animation: 'slideInUp 0.6s ease-out',
+  },
+  headerCell: { 
+    padding: '1.25rem', 
+    background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)', 
+    color: '#fff', 
+    textAlign: 'left' as const, 
+    position: 'sticky' as const, 
+    top: 0, 
+    zIndex: 10,
+    fontSize: '1rem',
+    fontWeight: '600',
+    textTransform: 'uppercase' as const,
+    letterSpacing: '0.05em',
+    whiteSpace: 'nowrap' as const,
+  },
+  row: { 
+    transition: 'all 0.3s ease', 
+    cursor: 'pointer',
+    borderBottom: '1px solid #f1f5f9',
+  },
+  cell: { 
+    padding: '1rem 1.25rem', 
+    color: '#334155',
+    fontSize: '0.80rem',
+    lineHeight: '1.5',
+    verticalAlign: 'top' as const,
+  },
+  footer: { 
+    display: 'flex', 
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
+    padding: '1rem 2rem', 
+    backgroundColor: '#1e3a8a', 
+    color: '#ffffff',
+    flexWrap: 'wrap' as const,
+    gap: '1rem',
+  },
   footerLeft: { fontSize: '0.9rem' },
   footerRight: { fontSize: '0.9rem' },
-  footerLink: { color: '#ffffff', textDecoration: 'underline', transition: 'opacity 0.2s ease' },
+  footerLink: { 
+    color: '#ffffff', 
+    textDecoration: 'underline', 
+    transition: 'opacity 0.2s ease' 
+  },
   slider: {
     width: '100%',
     accentColor: '#1e3a8a',
-  }
+  },
+  clearButton: {
+    padding: '0.875rem 1.25rem',
+    background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: '8px',
+    fontSize: '0.95rem',
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.5rem',
+    width: '100%',
+    boxShadow: '0 4px 6px -1px rgba(220, 38, 38, 0.3)',
+  },
+  loadingContainer: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '4rem',
+    color: '#64748b',
+    background: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: '12px',
+    margin: '2rem',
+    backdropFilter: 'blur(10px)',
+  },
+  spinner: {
+    width: '48px',
+    height: '48px',
+    borderWidth: '4px',
+    borderStyle: 'solid',
+    borderColor: '#e2e8f0',
+    borderTopColor: '#1e3a8a',
+    borderRadius: '50%',
+    animation: 'spin 1s linear infinite',
+    marginBottom: '1.5rem',
+  },
+  link: {
+    color: '#1e3a8a',
+    textDecoration: 'none',
+    fontWeight: '500',
+    transition: 'color 0.2s ease',
+    wordBreak: 'break-word' as const,
+  },
 };
 
 const animationStyles = `
@@ -260,17 +711,67 @@ const animationStyles = `
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slideInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
 .fade-in {
   animation: fadeIn 0.3s ease-in;
 }
 
-tbody tr:hover {
-  background-color: rgb(147, 156, 173);
+/* Enhanced hover effects */
+tbody tr {
+  transition: all 0.3s ease;
 }
 
+tbody tr:hover {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(248, 250, 252, 0.5);
+}
+
+tbody tr:nth-child(even):hover {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+/* Input focus effects */
+input:focus, select:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  transform: translateY(-1px);
+}
+
+/* Button hover effects */
 .logout-hover:hover {
-  transform: scale(1.1);
-  background-color: #dc2626;
+  transform: scale(1.05);
+  background-color: #dc2626 !important;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.mobile-menu-hover:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-1px);
 }
 
 .logout-popup {
@@ -278,22 +779,141 @@ tbody tr:hover {
   position: absolute;
   top: 130%;
   right: 0;
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   color: #1e3a8a;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: fadeIn 0.3s ease-out;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: slideInUp 0.3s ease-out;
   white-space: nowrap;
   z-index: 999;
+  border: 1px solid #e2e8f0;
 }
 
 .logout-hover:hover + .logout-popup {
   display: block;
 }
 
+.nav-tab:hover:not([data-active="true"]) {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.clear-button:hover {
+  background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px -2px rgba(220, 38, 38, 0.4);
+}
+
+.close-sidebar:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Filter group animations */
+.filter-group {
+  transition: all 0.3s ease;
+}
+
+.filter-group:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-1px);
+}
+
+/* Link hover effects */
+a:hover {
+  color: #3b82f6 !important;
+  text-decoration: underline;
+}
+
+/* Slider styling */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3);
+}
+
+input[type="range"]::-webkit-slider-track {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #e2e8f0 0%, #cbd5e1 100%);
+}
+
 /* Responsive styles */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    border-right: none !important;
+    border-bottom: 2px solid #e2e8f0;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+  
+  .sidebar h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+  }
+  
+  .filter-group {
+    margin-bottom: 1.25rem !important;
+  }
+  
+  .container {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.25rem 1rem;
+  }
+  
+  .nav-tabs {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .nav-tab {
+    flex: 1;
+    justify-content: center;
+    padding: 0.875rem 1rem;
+  }
+  
+  .sidebar {
+    padding: 1.5rem !important;
+  }
+  
+  .container {
+    padding: 1.5rem !important;
+  }
+  
+  .table-wrapper {
+    margin: 0 -0.5rem;
+  }
+}
+
 @media (max-width: 600px) {
   header {
     flex-direction: column;
@@ -304,11 +924,30 @@ tbody tr:hover {
     right: auto;
     left: 0;
   }
-
-  aside {
-    position: static !important;
-    height: auto !important;
+  
+  .nav-tabs {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .sidebar {
+    max-height: 250px !important;
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .filter-group label {
+    font-size: 0.9rem;
+  }
+  
+  .input, .slider {
+    font-size: 0.9rem;
+    padding: 0.4rem;
   }
 }
 `;
-
+// rgb(203, 255, 0)
