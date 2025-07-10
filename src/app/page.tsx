@@ -275,21 +275,21 @@ export default function Page() {
                   type="number"
                   style={styles.input}
                   placeholder="Min Price"
-                  value={currentFilters.minPrice || ''}
+                  value={(currentFilters as Filters['publication']).minPrice || ''}
                   onChange={(e) => updateFilters({ minPrice: e.target.value })}
                 />
               </div>
 
               <div style={styles.filterGroup}>
                 <label style={styles.filterLabel}>
-                  Max Price: ${currentFilters.maxPrice || 100000}
+                  Max Price: ${(currentFilters as Filters['publication']).maxPrice || 100000}
                 </label>
                 <input
                   type="range"
                   min="0"
                   max="100000"
                   step="100"
-                  value={currentFilters.maxPrice || 100000}
+                  value={(currentFilters as Filters['publication']).maxPrice || 100000}
                   onChange={(e) => updateFilters({ maxPrice: e.target.value })}
                   style={styles.slider}
                 />
@@ -301,7 +301,7 @@ export default function Page() {
                   type="text"
                   style={styles.input}
                   placeholder="Region"
-                  value={currentFilters.region || ''}
+                  value={(currentFilters as Filters['publication']).region || ''}
                   onChange={(e) => updateFilters({ region: e.target.value })}
                 />
               </div>
