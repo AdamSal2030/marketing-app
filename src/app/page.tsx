@@ -60,6 +60,13 @@ interface Filters {
 type TableType = 'publication' | 'television' | 'broadcast_television';
 
 export default function Page() {
+  // Store data for each table type separately
+  const [allData, setAllData] = useState<Record<TableType, DataItem[]>>({
+    publication: [],
+    television: [],
+    broadcast_television: []
+  });
+
   const [data, setData] = useState<DataItem[]>([]);
   const [filters, setFilters] = useState<Filters>({ 
     publication: { search: '', minPrice: '', maxPrice: '', region: '' },
@@ -105,6 +112,10 @@ export default function Page() {
       const fetchedData: DataItem[] = await res.json();
       
       setData(fetchedData);
+      setAllData(prev => ({
+        ...prev,
+        [tableType]: fetchedData
+      }));
     } catch (error) {
       console.error('Error fetching data:', error);
       setData([]);
@@ -176,8 +187,17 @@ export default function Page() {
   const getVisibleColumns = (items: DataItem[]) => {
     if (!items.length) return [];
     const allKeys = Object.keys(items[0]);
-    // Limit to first 4-5 most important columns, but keep example column
-    return allKeys.filter(key => key !== 'url' && key !== 'logo').slice(0, 5);
+    
+    if (activeTable === 'publication') {
+      // For publications, prioritize: name, price, regions, genres, example
+      const priorityOrder = ['name', 'price', 'regions', 'genres', 'example', 'estimated_time', 'do_follow'];
+      const orderedKeys = priorityOrder.filter(key => allKeys.includes(key));
+      const remainingKeys = allKeys.filter(key => !priorityOrder.includes(key) && key !== 'url' && key !== 'logo');
+      return [...orderedKeys, ...remainingKeys].slice(0, 6);
+    } else {
+      // For TV tables, exclude example, url, logo
+      return allKeys.filter(key => key !== 'url' && key !== 'logo' && key !== 'example').slice(0, 5);
+    }
   };
 
   const visibleColumns = getVisibleColumns(filteredData);
@@ -296,7 +316,7 @@ export default function Page() {
                 <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
                   activeTable === type ? 'bg-black/20 text-black' : 'bg-gray-700 text-gray-300'
                 }`}>
-                  {filteredData.length}
+                  {type === activeTable ? filteredData.length : allData[type].length}
                 </span>
               </button>
             ))}
