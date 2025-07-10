@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import Papa from 'papaparse';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(req, res) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const filePath = path.resolve(process.cwd(), 'data', 'data2.csv');
     
@@ -18,7 +19,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'CSV parsing error', details: errors });
     }
 
-    const transformed = data.map(item => ({
+    const transformed = data.map((item: any) => ({
         CallSign: item['Call Sign'] || '',
         station: item['Station'] || '',
         rate: item.Rate ? Number(item.Rate.replace(/\$/g, '').replace(/,/g, '')) : 0,
