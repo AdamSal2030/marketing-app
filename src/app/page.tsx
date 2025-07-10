@@ -252,12 +252,16 @@ export default function Page() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center animate-pulse-custom">
-                  <BarChart3 size={20} className="text-white" />
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1 animate-pulse-custom">
+                  <img 
+                    src="https://img1.wsimg.com/isteam/ip/8cadb395-621b-4f9f-8f43-5ccd43c2b69c/logo/ea9e6fb8-dd4e-46b8-b2b4-b0b4c1ed75e1.png/:/rs=w:342,h:174,cg:true,m/cr=w:342,h:174/qt=q:95"
+                    alt="Digital Marketing Agency Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-black">MediaMetrics</h1>
-                  <p className="text-xs text-black/70">Analytics Dashboard</p>
+                  <h1 className="text-xl font-bold text-black">Digital Marketing Agency</h1>
+                  <p className="text-xs text-black/70">Media Analytics Dashboard</p>
                 </div>
               </div>
             </div>
@@ -526,7 +530,7 @@ export default function Page() {
       <footer className="border-t border-gray-800 lime-gradient mt-12 animate-fadeIn">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-            <p className="text-sm text-black/80 font-medium">© 2025 MediaMetrics. All rights reserved.</p>
+            <p className="text-sm text-black/80 font-medium">© 2025 Digital Marketing Agency. All rights reserved.</p>
             <div className="flex items-center space-x-6">
               <a href="#" className="text-sm text-black/70 hover:text-black transition-colors font-medium hover-lift">Privacy</a>
               <a href="#" className="text-sm text-black/70 hover:text-black transition-colors font-medium hover-lift">Terms</a>
