@@ -29,7 +29,7 @@ interface TransformedRow {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<TransformedRow[] | { error: string; details?: any }>
+  res: NextApiResponse<TransformedRow[] | { error: string; details?: unknown }>
 ) {
   try {
     const filePath = path.resolve(process.cwd(), 'data', 'data1.csv');
