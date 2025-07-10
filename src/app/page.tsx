@@ -8,6 +8,7 @@ const formatHeader = (header) => {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
     .join(' '); 
 };
+// add a comment here
 
 export default function Page() {
   const [data, setData] = useState([]);
