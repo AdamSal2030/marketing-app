@@ -1,14 +1,42 @@
 import fs from 'fs';
 import path from 'path';
 import Papa from 'papaparse';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(req, res) {
+// Define the shape of your CSV data
+interface CSVRow {
+  'Program Name'?: string;
+  'Affiliate'?: string;
+  'State'?: string;
+  'Calls'?: string;
+  'Market'?: string;
+  'Location'?: string;
+  'Time'?: string;
+  'Rate'?: string;
+}
+
+// Define the transformed output shape
+interface TransformedRow {
+  name: string;
+  Affiliate: string;
+  State: string;
+  call: string;
+  market: string;
+  location: string;
+  time: string;
+  price: number;
+}
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<TransformedRow[] | { error: string; details?: any }>
+) {
   try {
     const filePath = path.resolve(process.cwd(), 'data', 'data1.csv');
     
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    const { data, errors } = Papa.parse(fileContent, {
+    const { data, errors } = Papa.parse<CSVRow>(fileContent, {
       header: true,
       skipEmptyLines: true,
     });
@@ -18,11 +46,11 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'CSV parsing error', details: errors });
     }
 
-    const transformed = data.map(item => ({
+    const transformed: TransformedRow[] = data.map((item: CSVRow) => ({
       name: item['Program Name'] || '',
       Affiliate: item.Affiliate || '',
       State: item.State || '',
-      call: item.Calls,
+      call: item.Calls || '',
       market: item.Market || '',
       location: item.Location || '',
       time: item.Time || '',
