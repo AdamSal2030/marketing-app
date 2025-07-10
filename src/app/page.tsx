@@ -2,25 +2,74 @@
 
 import { useEffect, useState } from 'react';
 
-const formatHeader = (header) => {
+// Add proper type for formatHeader function
+const formatHeader = (header: string): string => {
   return header
     .split('_') 
     .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
     .join(' '); 
 };
 
+// Define types for your data structures
+interface DataItem {
+  name?: string;
+  price?: number;
+  do_follow?: boolean | string;
+  estimated_time?: string;
+  genres?: string;
+  regions?: string;
+  url?: string;
+  example?: string;
+  logo?: string;
+  // Television fields
+  Affiliate?: string;
+  State?: string;
+  call?: string;
+  market?: string;
+  location?: string;
+  time?: string;
+  // Broadcast TV fields
+  CallSign?: string;
+  station?: string;
+  rate?: number;
+  tat?: string;
+  sponsored?: string;
+  indexed?: string;
+  SegmentLength?: string;
+  ProgramName?: string;
+  InterviewType?: string;
+  Example?: string;
+}
+
+interface Filters {
+  publication: {
+    search: string;
+    minPrice: string;
+    maxPrice: string;
+    region: string;
+  };
+  television: {
+    search: string;
+  };
+  broadcast_television: {
+    callSign: string;
+  };
+}
+
+type TableType = 'publication' | 'television' | 'broadcast_television';
+
 export default function Page() {
-  const [data, setData] = useState([]);
-  const [filters, setFilters] = useState({ 
+  const [data, setData] = useState<DataItem[]>([]);
+  const [filters, setFilters] = useState<Filters>({ 
     publication: { search: '', minPrice: '', maxPrice: '', region: '' },
     television: { search: '' }, 
     broadcast_television: { callSign: '' } 
   });
   
-  const [activeTable, setActiveTable] = useState('publication');
-  const [loading, setLoading] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [activeTable, setActiveTable] = useState<TableType>('publication');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   // Check screen size
   useEffect(() => {
@@ -35,10 +84,10 @@ export default function Page() {
   }, []);
 
   // Function to fetch data based on table type
-  const fetchData = async (tableType) => {
+  const fetchData = async (tableType: TableType) => {
     setLoading(true);
     try {
-      let endpoint;
+      let endpoint: string;
       switch (tableType) {
         case 'publication':
           endpoint = '/api/data';
@@ -54,7 +103,7 @@ export default function Page() {
       }
       
       const res = await fetch(endpoint);
-      const fetchedData = await res.json();
+      const fetchedData: DataItem[] = await res.json();
       
       setData(fetchedData);
     } catch (error) {
@@ -70,7 +119,7 @@ export default function Page() {
   }, [activeTable]);
 
   // Handle table switch
-  const handleTableSwitch = (tableType) => {
+  const handleTableSwitch = (tableType: TableType) => {
     setActiveTable(tableType);
     if (isMobile) setSidebarOpen(false);
   };
@@ -79,19 +128,19 @@ export default function Page() {
   const currentFilters = filters[activeTable];
 
   // Update filters for current table
-  const updateFilters = (newFilters) => {
+  const updateFilters = (newFilters: Partial<Filters[TableType]>) => {
     setFilters(prev => ({
       ...prev,
       [activeTable]: { ...prev[activeTable], ...newFilters }
     }));
   };
 
-  const filteredData = data.filter((item) => {
+  const filteredData = data.filter((item: DataItem) => {
     if (activeTable === 'publication') {
       const searchMatch = item.name?.toLowerCase().includes(currentFilters.search?.toLowerCase() || '');
       const price = item.price || 0;
-      const minMatch = currentFilters.minPrice === '' || price >= parseFloat(currentFilters.minPrice || 0);
-      const maxMatch = currentFilters.maxPrice === '' || price <= parseFloat(currentFilters.maxPrice || 100000);
+      const minMatch = currentFilters.minPrice === '' || price >= parseFloat(currentFilters.minPrice || '0');
+      const maxMatch = currentFilters.maxPrice === '' || price <= parseFloat(currentFilters.maxPrice || '100000');
       const regionMatch = currentFilters.region === '' || 
         new RegExp(currentFilters.region, 'i').test(item.regions || '');
       return searchMatch && minMatch && maxMatch && regionMatch;
@@ -99,7 +148,7 @@ export default function Page() {
       // Television: Only filter by Calls column using the search filter
       return item.call?.toLowerCase().includes((currentFilters.search || '').toLowerCase());
     } else if (activeTable === 'broadcast_television') {
-      return item.CallSign?.toLowerCase().includes((currentFilters.CallSign || '').toLowerCase());
+      return item.CallSign?.toLowerCase().includes((currentFilters.callSign || '').toLowerCase());
     }
     return true;
   });
@@ -277,8 +326,8 @@ export default function Page() {
                   type="text"
                   style={styles.input}
                   placeholder="Search callsign..."
-                  value={currentFilters.callsign || ''}
-                  onChange={(e) => updateFilters({ callsign: e.target.value })}
+                  value={currentFilters.callSign || ''}
+                  onChange={(e) => updateFilters({ callSign: e.target.value })}
                 />
               </div>
             </>
@@ -295,7 +344,7 @@ export default function Page() {
                 } else if (activeTable === 'television') {
                   updateFilters({ search: '' });
                 } else if (activeTable === 'broadcast_television') {
-                  updateFilters({ callsign: '' });
+                  updateFilters({ callSign: '' });
                 }
               }}
             >
@@ -316,7 +365,7 @@ export default function Page() {
                 <table style={styles.table} className="fade-in">
                   <thead>
                     <tr>
-                      {filteredData[0] && Object.keys(filteredData[0]).map((header) =>
+                      {filteredData[0] && Object.keys(filteredData[0]).map((header: string) =>
                         header !== 'url' && header !== 'logo' && (
                           <th key={header} style={styles.headerCell}>
                             {formatHeader(header)}
@@ -327,9 +376,9 @@ export default function Page() {
                   </thead>
                   <tbody>
                     {filteredData.length > 0 ? (
-                      filteredData.map((row, idx) => (
+                      filteredData.map((row: DataItem, idx: number) => (
                         <tr key={idx} style={styles.row}>
-                          {Object.keys(row).map((key, i) => {
+                          {Object.keys(row).map((key: string, i: number) => {
                             if (key === 'url' || key === 'logo') return null;
 
                             if (key === 'example' && row.example) {
@@ -351,6 +400,8 @@ export default function Page() {
                               );
                             }
 
+                            const cellValue = row[key as keyof DataItem];
+
                             return (
                               <td key={i} style={styles.cell}>
                                 {key === 'name' && row.url ? (
@@ -363,12 +414,12 @@ export default function Page() {
                                       />
                                     )}
                                     <a href={row.url} target="_blank" rel="noopener noreferrer" style={styles.link}>
-                                      {row[key]}
+                                      {cellValue}
                                     </a>
                                   </div>
                                 ) : (
                                   <div style={{ minWidth: key === 'name' ? '200px' : '120px', wordBreak: 'break-word' }}>
-                                    {row[key]}
+                                    {cellValue}
                                   </div>
                                 )}
                               </td>
@@ -950,4 +1001,3 @@ input[type="range"]::-webkit-slider-track {
   }
 }
 `;
-// rgb(203, 255, 0)
