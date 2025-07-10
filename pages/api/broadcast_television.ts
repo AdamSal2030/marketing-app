@@ -2,7 +2,21 @@ import fs from 'fs';
 import path from 'path';
 import Papa from 'papaparse';
 import { NextApiRequest, NextApiResponse } from 'next';
-//commit
+
+// Define the shape of your CSV data
+interface CSVRow {
+  'Call Sign'?: string;
+  'Station'?: string;
+  'Rate'?: string;
+  'TAT'?: string;
+  'Sponsored'?: string;
+  'Indexed'?: string;
+  'Segement Length'?: string;
+  'Location'?: string;
+  'Program Name'?: string;
+  'Interview Type'?: string;
+  'Example'?: string;
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -10,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    const { data, errors } = Papa.parse(fileContent, {
+    const { data, errors } = Papa.parse<CSVRow>(fileContent, {
       header: true,
       skipEmptyLines: true,
     });
@@ -20,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(400).json({ error: 'CSV parsing error', details: errors });
     }
 
-    const transformed = data.map((item: any) => ({
+    const transformed = data.map((item: CSVRow) => ({
         CallSign: item['Call Sign'] || '',
         station: item['Station'] || '',
         rate: item.Rate ? Number(item.Rate.replace(/\$/g, '').replace(/,/g, '')) : 0,
