@@ -315,7 +315,7 @@ export default function Page() {
                   type="text"
                   style={styles.input}
                   placeholder="Search calls..."
-                  value={currentFilters.search || ''}
+                  value={(currentFilters as Filters['television']).search || ''}
                   onChange={(e) => updateFilters({ search: e.target.value })}
                 />
               </div>
@@ -329,7 +329,7 @@ export default function Page() {
                   type="text"
                   style={styles.input}
                   placeholder="Search callsign..."
-                  value={currentFilters.callSign || ''}
+                  value={(currentFilters as Filters['broadcast_television']).callSign || ''}
                   onChange={(e) => updateFilters({ callSign: e.target.value })}
                 />
               </div>
