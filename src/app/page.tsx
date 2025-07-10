@@ -176,8 +176,8 @@ export default function Page() {
   const getVisibleColumns = (items: DataItem[]) => {
     if (!items.length) return [];
     const allKeys = Object.keys(items[0]);
-    // Limit to first 4-5 most important columns
-    return allKeys.filter(key => key !== 'url' && key !== 'logo' && key !== 'example').slice(0, 5);
+    // Limit to first 4-5 most important columns, but keep example column
+    return allKeys.filter(key => key !== 'url' && key !== 'logo').slice(0, 5);
   };
 
   const visibleColumns = getVisibleColumns(filteredData);
@@ -468,12 +468,25 @@ export default function Page() {
                           const cellValue = row[key as keyof DataItem];
                           return (
                             <td key={key} className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm">
-                              {key === 'name' ? (
+                              {key === 'example' && row.example ? (
+                                <a
+                                  href={`https://cdn.sanity.io/images/8n90kyzz/production/${row.example}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-block transition-all duration-300 hover:scale-110"
+                                >
+                                  <div className="w-10 h-10 bg-gradient-to-br from-[#cbff00] to-[#9fff00] rounded-lg flex items-center justify-center shadow-lg hover:shadow-xl">
+                                    <span className="text-black text-lg">🖼️</span>
+                                  </div>
+                                </a>
+                              ) : key === 'name' ? (
                                 <div className="flex items-center space-x-3">
                                   {row.logo && (
-                                    <div className="w-8 h-8 rounded-lg bg-gray-700 flex items-center justify-center border border-gray-600">
-                                      <span className="text-xs">🏢</span>
-                                    </div>
+                                    <img
+                                      src={`https://cdn.sanity.io/images/8n90kyzz/production/${row.logo}`}
+                                      alt="logo"
+                                      className="w-8 h-8 rounded-lg object-cover border border-gray-700 hover:scale-110 transition-transform duration-300"
+                                    />
                                   )}
                                   {row.url ? (
                                     <a 
