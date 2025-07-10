@@ -137,18 +137,21 @@ export default function Page() {
 
   const filteredData = data.filter((item: DataItem) => {
     if (activeTable === 'publication') {
-      const searchMatch = item.name?.toLowerCase().includes(currentFilters.search?.toLowerCase() || '');
+      const pubFilters = currentFilters as Filters['publication'];
+      const searchMatch = item.name?.toLowerCase().includes(pubFilters.search?.toLowerCase() || '');
       const price = item.price || 0;
-      const minMatch = currentFilters.minPrice === '' || price >= parseFloat(currentFilters.minPrice || '0');
-      const maxMatch = currentFilters.maxPrice === '' || price <= parseFloat(currentFilters.maxPrice || '100000');
-      const regionMatch = currentFilters.region === '' || 
-        new RegExp(currentFilters.region, 'i').test(item.regions || '');
+      const minMatch = pubFilters.minPrice === '' || price >= parseFloat(pubFilters.minPrice || '0');
+      const maxMatch = pubFilters.maxPrice === '' || price <= parseFloat(pubFilters.maxPrice || '100000');
+      const regionMatch = pubFilters.region === '' || 
+        new RegExp(pubFilters.region, 'i').test(item.regions || '');
       return searchMatch && minMatch && maxMatch && regionMatch;
     } else if (activeTable === 'television') {
+      const tvFilters = currentFilters as Filters['television'];
       // Television: Only filter by Calls column using the search filter
-      return item.call?.toLowerCase().includes((currentFilters.search || '').toLowerCase());
+      return item.call?.toLowerCase().includes((tvFilters.search || '').toLowerCase());
     } else if (activeTable === 'broadcast_television') {
-      return item.CallSign?.toLowerCase().includes((currentFilters.callSign || '').toLowerCase());
+      const bcFilters = currentFilters as Filters['broadcast_television'];
+      return item.CallSign?.toLowerCase().includes((bcFilters.callSign || '').toLowerCase());
     }
     return true;
   });
