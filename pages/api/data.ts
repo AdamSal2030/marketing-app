@@ -1,8 +1,57 @@
 import fs from 'fs';
 import path from 'path';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 
-function roundToNearest50or100(num) {
+interface Genre {
+  name: string;
+}
+
+interface Region {
+  name: string;
+}
+
+interface Asset {
+  _ref: string;
+}
+
+interface ArticlePreview {
+  asset?: Asset;
+}
+
+interface Logo {
+  asset?: Asset;
+}
+
+interface DataItem {
+  name?: string;
+  defaultPrice?: string[];
+  do_follow?: boolean;
+  estimated_time?: string;
+  genres?: Genre[];
+  regions?: Region[];
+  url?: string;
+  articlePreview?: ArticlePreview;
+  logo?: Logo;
+}
+
+interface JsonData {
+  result: DataItem[];
+}
+
+interface TransformedItem {
+  name: string;
+  price: number | string;
+  do_follow: boolean | string;
+  estimated_time: string;
+  genres: string;
+  regions: string;
+  url: string;
+  example: string;
+  logo: string;
+}
+
+function roundToNearest50or100(num: number): number {
   const remainder = num % 100;
   if (remainder < 25) {
     return Math.floor(num / 100) * 100;
@@ -13,21 +62,24 @@ function roundToNearest50or100(num) {
   }
 }
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest, 
+  res: NextApiResponse<TransformedItem[] | { error: string }>
+) {
   try {
     const filePath = path.resolve('data', 'data.json');
     const fileContent = fs.readFileSync(filePath, 'utf8');
-    const json = JSON.parse(fileContent);
+    const json: JsonData = JSON.parse(fileContent);
 
     if (!Array.isArray(json.result)) {
       return res.status(400).json({ error: "Invalid data format: 'results' not found." });
     }
 
-    const transformed = json.result.map((item) => {
+    const transformed: TransformedItem[] = json.result.map((item: DataItem) => {
       const rawPrice = item.defaultPrice?.[0];
-      const priceNum = parseFloat(rawPrice);
+      const priceNum = parseFloat(rawPrice || '');
 
-      let finalPrice = '';
+      let finalPrice: number | string = '';
       if (!isNaN(priceNum)) {
         finalPrice = priceNum <= 500
           ? priceNum + 150
