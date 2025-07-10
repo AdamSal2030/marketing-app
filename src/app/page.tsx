@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Filter, Search, Menu, X, Database, Tv, Radio, ChevronDown, BarChart3, LogOut, User } from 'lucide-react';
+import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut } from 'lucide-react';
 
 // Add proper type for formatHeader function
 const formatHeader = (header: string): string => {
@@ -70,12 +70,10 @@ export default function Page() {
   const [activeTable, setActiveTable] = useState<TableType>('publication');
   const [loading, setLoading] = useState<boolean>(false);
   const [filtersOpen, setFiltersOpen] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  // Check screen size
+  // Check screen size for responsive behavior
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
+      // Mobile responsive behavior can be added here if needed
     };
     
     checkScreenSize();
@@ -253,11 +251,7 @@ export default function Page() {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1 animate-pulse-custom">
-                  <img 
-                    src="https://img1.wsimg.com/isteam/ip/8cadb395-621b-4f9f-8f43-5ccd43c2b69c/logo/ea9e6fb8-dd4e-46b8-b2b4-b0b4c1ed75e1.png/:/rs=w:342,h:174,cg:true,m/cr=w:342,h:174/qt=q:95"
-                    alt="Digital Marketing Agency Logo"
-                    className="w-full h-full object-contain"
-                  />
+                  <span className="text-2xl">📊</span>
                 </div>
                 <div>
                   <h1 className="text-xl font-bold text-black">Digital Marketing Agency</h1>
@@ -477,11 +471,9 @@ export default function Page() {
                               {key === 'name' ? (
                                 <div className="flex items-center space-x-3">
                                   {row.logo && (
-                                    <img
-                                      src={`https://cdn.sanity.io/images/8n90kyzz/production/${row.logo}`}
-                                      alt="logo"
-                                      className="w-8 h-8 rounded-lg object-cover border border-gray-700 hover-lift"
-                                    />
+                                    <div className="w-8 h-8 rounded-lg bg-gray-700 flex items-center justify-center border border-gray-600">
+                                      <span className="text-xs">🏢</span>
+                                    </div>
                                   )}
                                   {row.url ? (
                                     <a 
