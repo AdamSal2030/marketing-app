@@ -264,7 +264,7 @@ export default function Page() {
                   type="text"
                   style={styles.input}
                   placeholder="Search publications..."
-                  value={currentFilters.search || ''}
+                  value={(currentFilters as Filters['publication']).search || ''}
                   onChange={(e) => updateFilters({ search: e.target.value })}
                 />
               </div>
