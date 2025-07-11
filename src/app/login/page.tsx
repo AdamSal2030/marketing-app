@@ -196,12 +196,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Demo Credentials Info */}
-            <div className="p-3 bg-[#cbff00]/10 border border-[#cbff00]/20 rounded-lg">
-              <p className="text-xs text-[#cbff00] font-medium mb-1">Demo Credentials:</p>
-              <p className="text-xs text-gray-300">Email: admin@digitalagency.com</p>
-              <p className="text-xs text-gray-300">Password: password123</p>
-            </div>
 
             {/* Login Button */}
             <button
@@ -225,11 +219,7 @@ export default function LoginPage() {
           </div>
 
           {/* Forgot Password Link */}
-          <div className="mt-6 text-center">
-            <a href="#" className="text-sm text-gray-400 hover:text-[#cbff00] transition-colors">
-              Forgot your password?
-            </a>
-          </div>
+          
         </div>
 
         {/* Footer */}
