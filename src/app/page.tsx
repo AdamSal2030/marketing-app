@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut, UserPlus, ArrowUpDown, ArrowUp, ArrowDown, Download } from 'lucide-react';
+import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut, UserPlus, ArrowUpDown, ArrowUp, ArrowDown, Download, Settings } from 'lucide-react';
 
 // Import the invitation modal
 import InvitationModal from '../components/InvitationModal';
@@ -358,7 +358,7 @@ export default function Page() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-3 animate-slideInLeft">
-              <div className="w-20 h-12 bg-white rounded-lg flex items-center justify-center p-2">
+              <div className="w-24 h-16 bg-black/10 rounded-lg flex items-center justify-center p-1 border border-black/20">
                 <img 
                   src="/logo.png" 
                   alt="Digital Networking Agency Logo"
@@ -379,6 +379,16 @@ export default function Page() {
                   <span className="ml-1 text-black font-bold">{sortedData.length}</span>
                 </div>
               </div>
+              {/* Admin Only - Settings Button */}
+              {userRole === 'admin' && (
+                <button 
+                  onClick={() => window.location.href = '/users'}
+                  className="flex items-center space-x-2 px-3 py-1.5 bg-black/20 hover:bg-black/30 rounded-lg transition-all hover-lift hover-scale"
+                >
+                  <Settings size={16} className="text-black" />
+                  <span className="hidden sm:inline text-sm text-black font-medium">Settings</span>
+                </button>
+              )}
               
               {/* Admin Only - Send Invitation Button */}
               {userRole === 'admin' && (

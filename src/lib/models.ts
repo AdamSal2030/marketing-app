@@ -89,12 +89,25 @@ export class UserModel {
   static async findByEmail(email: string): Promise<User | null> {
     try {
       const result = await db.query(
-        'SELECT * FROM users WHERE email = $1 AND is_active = true',
+        'SELECT * FROM users WHERE email = $1',
         [email]
       );
       return result.rows[0] || null;
     } catch (error) {
       console.error('Error finding user by email:', error);
+      return null;
+    }
+  }
+
+  static async findActiveByEmail(email: string): Promise<User | null> {
+    try {
+      const result = await db.query(
+        'SELECT * FROM users WHERE email = $1 AND is_active = true',
+        [email]
+      );
+      return result.rows[0] || null;
+    } catch (error) {
+      console.error('Error finding active user by email:', error);
       return null;
     }
   }
@@ -147,6 +160,13 @@ export class UserModel {
   static async verifyPassword(user: User, password: string): Promise<boolean> {
     if (!user.password_hash) return false;
     return bcrypt.compare(password, user.password_hash);
+  }
+
+  static async updateUserStatus(userId: number, isActive: boolean): Promise<void> {
+    await db.query(
+      'UPDATE users SET is_active = $1, updated_at = NOW() WHERE id = $2',
+      [isActive, userId]
+    );
   }
 }
 
@@ -225,5 +245,16 @@ export class ActivityLogModel {
         data.user_agent
       ]
     );
+  }
+
+  static async getRecentActivity(userId?: number, limit: number = 50): Promise<any[]> {
+    const query = userId 
+      ? 'SELECT * FROM activity_logs WHERE user_id = $1 ORDER BY created_at DESC LIMIT $2'
+      : 'SELECT * FROM activity_logs ORDER BY created_at DESC LIMIT $1';
+    
+    const params = userId ? [userId, limit] : [limit];
+    const result = await db.query(query, params);
+    
+    return result.rows;
   }
 }

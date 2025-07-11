@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
+import { NextRequest } from 'next/server';
 import { UserModel, SessionModel, ActivityLogModel } from './models';
 
 const JWT_SECRET = process.env.JWT_SECRET!;
@@ -80,6 +81,20 @@ export async function validateSession(token: string): Promise<AuthUser | null> {
 
     return user;
   } catch (error) {
+    return null;
+  }
+}
+
+export async function verifySession(request: NextRequest): Promise<AuthUser | null> {
+  try {
+    // Get token from cookies
+    const token = request.cookies.get('auth-token')?.value;
+    if (!token) return null;
+
+    // Validate the session
+    return await validateSession(token);
+  } catch (error) {
+    console.error('Session verification error:', error);
     return null;
   }
 }

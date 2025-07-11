@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowRight } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowRight, Shield } from 'lucide-react';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -9,15 +9,18 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isRestricted, setIsRestricted] = useState(false);
 
   const handleLogin = async () => {
     if (!email || !password) {
       setError('Please fill in all fields');
+      setIsRestricted(false);
       return;
     }
 
     setLoading(true);
     setError('');
+    setIsRestricted(false);
 
     try {
       const response = await fetch('/api/auth/login', {
@@ -33,10 +36,18 @@ export default function LoginPage() {
         window.location.href = '/';
       } else {
         const data = await response.json();
-        setError(data.message || 'Login failed');
+        
+        // Check if account is restricted
+        if (data.code === 'ACCOUNT_RESTRICTED') {
+          setIsRestricted(true);
+          setError(data.message);
+        } else {
+          setError(data.message || 'Login failed');
+        }
       }
     } catch (error) {
       setError('Something went wrong. Please try again.');
+      setIsRestricted(false);
     } finally {
       setLoading(false);
     }
@@ -71,6 +82,11 @@ export default function LoginPage() {
           50% { box-shadow: 0 0 30px rgba(203, 255, 0, 0.5); }
         }
         
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.02); }
+        }
+        
         .animate-fadeIn {
           animation: fadeIn 0.6s ease-out;
         }
@@ -81,6 +97,10 @@ export default function LoginPage() {
         
         .animate-glow {
           animation: glow 2s infinite;
+        }
+        
+        .animate-pulse-custom {
+          animation: pulse 2s infinite;
         }
         
         .lime-gradient {
@@ -132,11 +152,11 @@ export default function LoginPage() {
           <div className="w-24 h-16 bg-white rounded-xl flex items-center justify-center p-3 mx-auto mb-4 shimmer-effect">
             <img 
               src="/logo.png" 
-              alt="Digital Marketing Agency Logo"
+              alt="Digital Networking Agency Logo"
               className="w-full h-full object-contain"
             />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Digital Marketing Agency</h1>
+          <h1 className="text-3xl font-bold text-white mb-2">Digital Networking Agency</h1>
           <p className="text-gray-400">Access your media analytics dashboard</p>
         </div>
 
@@ -148,9 +168,25 @@ export default function LoginPage() {
           </div>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center space-x-2 text-red-400 animate-fadeIn">
-              <AlertCircle size={16} />
-              <span className="text-sm">{error}</span>
+            <div className={`mb-4 p-4 rounded-lg border flex items-start space-x-3 animate-fadeIn ${
+              isRestricted 
+                ? 'bg-orange-500/10 border-orange-500/20 text-orange-400 animate-pulse-custom'
+                : 'bg-red-500/10 border-red-500/20 text-red-400'
+            }`}>
+              {isRestricted ? (
+                <Shield size={20} className="mt-0.5 flex-shrink-0" />
+              ) : (
+                <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />
+              )}
+              <div>
+                <p className="text-sm font-medium">{isRestricted ? 'Account Restricted' : 'Login Error'}</p>
+                <p className="text-xs mt-1 opacity-90">{error}</p>
+                {isRestricted && (
+                  <p className="text-xs mt-2 opacity-75">
+                    Contact your system administrator to restore access to your account.
+                  </p>
+                )}
+              </div>
             </div>
           )}
 
@@ -196,7 +232,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-
             {/* Login Button */}
             <button
               onClick={handleLogin}
@@ -217,14 +252,11 @@ export default function LoginPage() {
               )}
             </button>
           </div>
-
-          {/* Forgot Password Link */}
-          
         </div>
 
         {/* Footer */}
         <div className="text-center mt-8 text-gray-500 text-xs animate-fadeIn">
-          <p>© 2025 Digital Marketing Agency. All rights reserved.</p>
+          <p>© 2025 Digital Networking Agency. All rights reserved.</p>
         </div>
       </div>
     </div>

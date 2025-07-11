@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Find user in database
+    // Find user in database (including inactive users for proper error handling)
     const user = await UserModel.findByEmail(email);
     if (!user) {
       return NextResponse.json(
@@ -23,12 +23,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verify password
+    // Verify password first
     const isValid = await UserModel.verifyPassword(user, password);
     if (!isValid) {
       return NextResponse.json(
         { message: 'Invalid email or password' },
         { status: 401 }
+      );
+    }
+
+    // Check if account is active (after password verification)
+    if (!user.is_active) {
+      return NextResponse.json(
+        { 
+          message: 'Your account has been restricted. Please contact the administrator for assistance.',
+          code: 'ACCOUNT_RESTRICTED'
+        },
+        { status: 403 }
       );
     }
 
