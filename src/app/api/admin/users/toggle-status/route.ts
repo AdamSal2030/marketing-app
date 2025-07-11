@@ -7,6 +7,20 @@ export async function POST(request: NextRequest) {
   try {
     // Verify session and check if user is admin
     const sessionData = await verifySession(request);
+    if (!sessionData) {
+      return NextResponse.json(
+        { message: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
+    if (sessionData.role !== 'admin') {
+      return NextResponse.json(
+        { message: 'Forbidden - Admin access required' },
+        { status: 403 }
+      );
+    }
+
     const { userId, isActive } = await request.json();
 
     if (!userId || typeof isActive !== 'boolean') {
@@ -39,7 +53,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    
+    // Prevent self-restriction
+    if (targetUser.id === sessionData.id) {
+      return NextResponse.json(
+        { message: 'Cannot modify your own account' },
+        { status: 403 }
+      );
+    }
 
     // Update user status
     await db.query(
@@ -53,14 +73,19 @@ export async function POST(request: NextRequest) {
                      'unknown';
     const userAgent = request.headers.get('user-agent') || 'unknown';
 
-    // Log the action
-    await logActivity(
-      sessionData.id,
-      isActive ? 'USER_ACTIVATED' : 'USER_RESTRICTED',
-      `USER:${userId}`,
-      ipAddress,
-      userAgent
-    );
+    // Log the action - sessionData is guaranteed to exist here due to early return above
+    try {
+      await logActivity(
+        sessionData.id,                                    // TypeScript now knows this is not null
+        isActive ? 'USER_ACTIVATED' : 'USER_RESTRICTED',   
+        `USER:${userId}`,                                   
+        ipAddress,                                          
+        userAgent                                           
+      );
+    } catch (logError) {
+      console.error('Failed to log activity:', logError);
+      // Don't fail the whole request if logging fails
+    }
 
     return NextResponse.json({
       success: true,
