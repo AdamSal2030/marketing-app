@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut, UserPlus } from 'lucide-react';
+import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut, UserPlus, ArrowUpDown, ArrowUp, ArrowDown, Download } from 'lucide-react';
 
 // Import the invitation modal
 import InvitationModal from '../components/InvitationModal';
@@ -61,6 +61,7 @@ interface Filters {
 }
 
 type TableType = 'publication' | 'television' | 'broadcast_television';
+type SortDirection = 'asc' | 'desc' | null;
 
 export default function Page() {
   // Store data for each table type separately
@@ -82,6 +83,7 @@ export default function Page() {
   const [filtersOpen, setFiltersOpen] = useState<boolean>(false);
   const [invitationModalOpen, setInvitationModalOpen] = useState<boolean>(false);
   const [userRole, setUserRole] = useState<string>('user');
+  const [sortDirection, setSortDirection] = useState<SortDirection>(null);
   
   // Check screen size for responsive behavior
   useEffect(() => {
@@ -166,6 +168,8 @@ export default function Page() {
 
   useEffect(() => {
     fetchData(activeTable);
+    // Reset sort when changing tables
+    setSortDirection(null);
   }, [activeTable]);
 
   // Handle table switch
@@ -183,6 +187,34 @@ export default function Page() {
       ...prev,
       [activeTable]: { ...prev[activeTable], ...newFilters }
     }));
+  };
+
+  // Handle sort by price/rate
+  const handleSort = () => {
+    if (sortDirection === null) {
+      setSortDirection('asc'); // Start with lowest first
+    } else if (sortDirection === 'asc') {
+      setSortDirection('desc'); // Then highest first
+    } else {
+      setSortDirection(null); // Then no sort
+    }
+  };
+
+  // Get sort icon
+  const getSortIcon = () => {
+    if (sortDirection === 'asc') return <ArrowUp size={16} className="text-black" />;
+    if (sortDirection === 'desc') return <ArrowDown size={16} className="text-black" />;
+    return <ArrowUpDown size={16} className="text-black" />;
+  };
+
+  // Get sort label
+  const getSortLabel = () => {
+    const priceField = activeTable === 'publication' ? 'price' : 'rate';
+    const fieldName = priceField === 'price' ? 'Price' : 'Rate';
+    
+    if (sortDirection === 'asc') return `${fieldName} (Low to High)`;
+    if (sortDirection === 'desc') return `${fieldName} (High to Low)`;
+    return `Sort by ${fieldName}`;
   };
 
   const filteredData = data.filter((item: DataItem) => {
@@ -203,6 +235,22 @@ export default function Page() {
       return item.CallSign?.toLowerCase().includes((bcFilters.callSign || '').toLowerCase());
     }
     return true;
+  });
+
+  // Apply sorting to filtered data
+  const sortedData = [...filteredData].sort((a, b) => {
+    if (sortDirection === null) return 0;
+    
+    // Get the appropriate price field based on table type
+    const priceField = activeTable === 'publication' ? 'price' : 'rate';
+    const aValue = a[priceField as keyof DataItem] as number || 0;
+    const bValue = b[priceField as keyof DataItem] as number || 0;
+    
+    if (sortDirection === 'asc') {
+      return aValue - bValue;
+    } else {
+      return bValue - aValue;
+    }
   });
 
   const getTableIcon = (type: TableType) => {
@@ -240,7 +288,7 @@ export default function Page() {
     }
   };
 
-  const visibleColumns = getVisibleColumns(filteredData);
+  const visibleColumns = getVisibleColumns(sortedData);
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
@@ -313,13 +361,13 @@ export default function Page() {
               <div className="w-20 h-12 bg-white rounded-lg flex items-center justify-center p-2">
                 <img 
                   src="/logo.png" 
-                  alt="Digital Marketing Agency Logo"
+                  alt="Digital Networking Agency Logo"
                   className="w-full h-full object-contain"
                 />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-black">Digital Marketing Agency</h1>
-                <p className="text-xs text-black/70">Media Analytics Dashboard</p>
+                <h1 className="text-xl font-bold text-black">Digital Networking Agency</h1>
+                <p className="text-xs text-black/70">Publication Dashboard</p>
               </div>
             </div>
             </div>
@@ -328,7 +376,7 @@ export default function Page() {
               <div className="hidden sm:flex items-center space-x-6">
                 <div className="text-sm">
                   <span className="text-black/70">Results:</span>
-                  <span className="ml-1 text-black font-bold">{filteredData.length}</span>
+                  <span className="ml-1 text-black font-bold">{sortedData.length}</span>
                 </div>
               </div>
               
@@ -363,6 +411,44 @@ export default function Page() {
         </div>
       </header>
 
+      {/* Information Section */}
+      <div className="bg-gray-900/90 backdrop-blur-sm border-b border-gray-800 animate-fadeIn">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="bg-gray-800/50 rounded-xl border border-gray-700 p-6 hover-glow">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+              <div className="flex-1">
+                <div className="space-y-3">
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    <span className="text-[#cbff00] font-medium">Important Notice:</span> Once we have published the article for you, any further edits may include an extra charge.
+                  </p>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Digital Networking Agency will use reasonable good faith efforts to ensure that such article will remain publicly available in the applicable publication for at least 12 months.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 lg:ml-8">
+                <button
+                  onClick={() => window.open('https://docs.google.com/document/d/1example-pr-questionnaire', '_blank')}
+                  className="flex items-center justify-center space-x-2 px-4 py-2.5 border border-[#cbff00] text-[#cbff00] hover:bg-[#cbff00] hover:text-black font-medium rounded-lg transition-all hover-lift"
+                >
+                  <Download size={16} />
+                  <span>Download PR Questionnaire</span>
+                </button>
+                
+                <button
+                  onClick={() => window.open('https://docs.google.com/document/d/1example-tv-questionnaire', '_blank')}
+                  className="flex items-center justify-center space-x-2 px-4 py-2.5 border border-[#cbff00] text-[#cbff00] hover:bg-[#cbff00] hover:text-black font-medium rounded-lg transition-all hover-lift"
+                >
+                  <Download size={16} />
+                  <span>Download TV Questionnaire</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Navigation Tabs */}
       <div className="border-b border-gray-800 bg-gray-900/80 backdrop-blur-sm animate-fadeIn">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -383,7 +469,7 @@ export default function Page() {
                 <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
                   activeTable === type ? 'bg-black/20 text-black' : 'bg-gray-700 text-gray-300'
                 }`}>
-                  {type === activeTable ? filteredData.length : allData[type].length}
+                  {type === activeTable ? sortedData.length : allData[type].length}
                 </span>
               </button>
             ))}
@@ -409,7 +495,23 @@ export default function Page() {
               <ChevronDown size={16} className={`transition-transform duration-300 ${filtersOpen ? 'rotate-180' : ''}`} />
             </button>
             
-            {filtersOpen && (
+            {/* Sort Button - Only show for publication and broadcast_television */}
+            {activeTable !== 'television' && (
+              <button
+                onClick={handleSort}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-all hover-lift ${
+                  sortDirection
+                    ? 'lime-gradient text-black border-[#cbff00] shadow-lg'
+                    : 'bg-gray-800 text-white border-gray-700 hover:border-gray-600 hover-glow'
+                }`}
+              >
+                {getSortIcon()}
+                <span className="font-medium hidden sm:inline">{getSortLabel()}</span>
+                <span className="font-medium sm:hidden">Sort</span>
+              </button>
+            )}
+            
+            {(filtersOpen || sortDirection) && (
               <button
                 onClick={() => {
                   if (activeTable === 'publication') {
@@ -419,6 +521,7 @@ export default function Page() {
                   } else if (activeTable === 'broadcast_television') {
                     updateFilters({ callSign: '' });
                   }
+                  setSortDirection(null);
                 }}
                 className="text-sm text-gray-400 hover:text-[#cbff00] transition-colors animate-fadeIn"
               >
@@ -428,7 +531,12 @@ export default function Page() {
           </div>
           
           <div className="text-sm text-gray-400">
-            Showing <span className="text-[#cbff00] font-semibold">{filteredData.length}</span> of <span className="text-white">{data.length}</span> results
+            Showing <span className="text-[#cbff00] font-semibold">{sortedData.length}</span> of <span className="text-white">{data.length}</span> results
+            {sortDirection && (
+              <span className="ml-2 text-[#cbff00]">
+                • Sorted by {activeTable === 'publication' ? 'Price' : 'Rate'} ({sortDirection === 'asc' ? 'Low to High' : 'High to Low'})
+              </span>
+            )}
           </div>
         </div>
 
@@ -544,8 +652,8 @@ export default function Page() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-800">
-                  {filteredData.length > 0 ? (
-                    filteredData.map((row, idx) => (
+                  {sortedData.length > 0 ? (
+                    sortedData.map((row, idx) => (
                       <tr 
                         key={idx} 
                         style={{ animationDelay: `${idx * 0.05}s` }}
@@ -622,7 +730,7 @@ export default function Page() {
       <footer className="border-t border-gray-800 lime-gradient mt-12 animate-fadeIn">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-            <p className="text-sm text-black/80 font-medium">© 2025 Digital Marketing Agency. All rights reserved.</p>
+            <p className="text-sm text-black/80 font-medium">© 2025 Digital Networking Agency. All rights reserved.</p>
             <div className="flex items-center space-x-6">
               <a href="#" className="text-sm text-black/70 hover:text-black transition-colors font-medium hover-lift">Privacy</a>
               <a href="#" className="text-sm text-black/70 hover:text-black transition-colors font-medium hover-lift">Terms</a>
