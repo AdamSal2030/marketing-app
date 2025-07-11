@@ -59,6 +59,6 @@ export const config = {
     /*
      * Match all request paths except API routes, static files, and images
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|logo.png|signup).*)',
   ],
 };
