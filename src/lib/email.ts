@@ -7,7 +7,7 @@ export async function sendInvitationEmail(email: string, token: string, invitedB
   const inviteUrl = `${process.env.NEXT_PUBLIC_APP_URL}/signup/${token}`;
 
   const { error } = await resend.emails.send({
-    from: 'Digital Agency <usa-today.tv>', // use verified sender in production
+    from: 'Digital Agency <noreply@usa-today.tv>', // use verified sender in production
     to: email,
     subject: "You're invited to Digital Marketing Agency Dashboard",
     html: `
