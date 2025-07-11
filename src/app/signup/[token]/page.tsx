@@ -6,7 +6,7 @@ import { Eye, EyeOff, User, Lock, AlertCircle, ArrowRight, CheckCircle } from 'l
 
 export default function SignupPage() {
   const params = useParams();
-  const token = params.token as string;
+  const token = useParams()?.token as string;
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
