@@ -33,10 +33,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Get client info for logging
-    const ipAddress = request.ip || 
-      request.headers.get('x-forwarded-for') || 
-      request.headers.get('x-real-ip') || 
-      'unknown';
+    const ipAddress =
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || // If multiple IPs, use the first
+    request.headers.get('x-real-ip') ||
+    'unknown';
+
     const userAgent = request.headers.get('user-agent') || 'unknown';
 
     // Create session and token
