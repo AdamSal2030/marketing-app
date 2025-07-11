@@ -1,7 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut } from 'lucide-react';
+import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut, UserPlus } from 'lucide-react';
+
+// Import the invitation modal
+import InvitationModal from '../components/InvitationModal';
 
 // Add proper type for formatHeader function
 const formatHeader = (header: string): string => {
@@ -77,6 +80,9 @@ export default function Page() {
   const [activeTable, setActiveTable] = useState<TableType>('publication');
   const [loading, setLoading] = useState<boolean>(false);
   const [filtersOpen, setFiltersOpen] = useState<boolean>(false);
+  const [invitationModalOpen, setInvitationModalOpen] = useState<boolean>(false);
+  const [userRole, setUserRole] = useState<string>('user');
+  
   // Check screen size for responsive behavior
   useEffect(() => {
     const checkScreenSize = () => {
@@ -87,6 +93,40 @@ export default function Page() {
     window.addEventListener('resize', checkScreenSize);
     
     return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  // Get user role from API
+  useEffect(() => {
+    const checkUserRole = async () => {
+      try {
+        const response = await fetch('/api/auth/me');
+        if (response.ok) {
+          const userData = await response.json();
+          setUserRole(userData.role || 'user');
+        }
+      } catch (error) {
+        console.error('Failed to get user role:', error);
+      }
+    };
+    
+    checkUserRole();
+  }, []);
+
+  // Get user role from cookie or API
+  useEffect(() => {
+    const checkUserRole = async () => {
+      try {
+        const response = await fetch('/api/auth/me');
+        if (response.ok) {
+          const userData = await response.json();
+          setUserRole(userData.role || 'user');
+        }
+      } catch (error) {
+        console.error('Failed to get user role:', error);
+      }
+    };
+    
+    checkUserRole();
   }, []);
 
   // Function to fetch data based on table type
@@ -291,7 +331,30 @@ export default function Page() {
                   <span className="ml-1 text-black font-bold">{filteredData.length}</span>
                 </div>
               </div>
-              <button className="flex items-center space-x-2 px-3 py-1.5 bg-black/20 hover:bg-black/30 rounded-lg transition-all hover-lift">
+              
+              {/* Admin Only - Send Invitation Button */}
+              {userRole === 'admin' && (
+                <button 
+                  onClick={() => setInvitationModalOpen(true)}
+                  className="flex items-center space-x-2 px-3 py-1.5 bg-black/20 hover:bg-black/30 rounded-lg transition-all hover-lift hover-scale"
+                >
+                  <UserPlus size={16} className="text-black" />
+                  <span className="hidden sm:inline text-sm text-black font-medium">Invite User</span>
+                </button>
+              )}
+              
+              <button 
+                onClick={async () => {
+                  try {
+                    await fetch('/api/auth/logout', { method: 'POST' });
+                    window.location.href = '/login';
+                  } catch (error) {
+                    console.error('Logout failed:', error);
+                    window.location.href = '/login';
+                  }
+                }}
+                className="flex items-center space-x-2 px-3 py-1.5 bg-black/20 hover:bg-black/30 rounded-lg transition-all hover-lift hover-scale"
+              >
                 <LogOut size={16} className="text-black" />
                 <span className="hidden sm:inline text-sm text-black font-medium">Logout</span>
               </button>
@@ -568,6 +631,13 @@ export default function Page() {
           </div>
         </div>
       </footer>
+
+      {/* Admin Invitation Modal */}
+      <InvitationModal 
+        isOpen={invitationModalOpen}
+        onClose={() => setInvitationModalOpen(false)}
+        userRole={userRole}
+      />
     </div>
   );
 }
