@@ -148,18 +148,13 @@ export default function LoginPage() {
 
       <div className="relative z-10 w-full max-w-md">
         {/* Logo Section */}
-        <div className="text-center mb-8 animate-fadeIn">
-          <div className="w-24 h-16 bg-white rounded-xl flex items-center justify-center p-3 mx-auto mb-4 shimmer-effect">
+        <div className="w-34 h-26 bg-black rounded-xl flex items-center justify-center p-3 mx-auto mb-4 shimmer-effect">
             <img 
-              src="/logo.png" 
-              alt="Digital Networking Agency Logo"
-              className="w-full h-full object-contain"
+                src="/logo.png" 
+                alt="Digital Networking Agency Logo"
+                className="w-full h-full object-contain"
             />
-          </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Digital Networking Agency</h1>
-          <p className="text-gray-400">Access your media analytics dashboard</p>
         </div>
-
         {/* Login Form */}
         <div className="glass-effect rounded-2xl p-8 shadow-2xl animate-slideUp hover-glow">
           <div className="text-center mb-6">

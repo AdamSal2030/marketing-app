@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { UserModel, InvitationModel } from '@/lib/models';
 import { createSession, logActivity } from '@/lib/auth';
+import { sendSignupNotificationEmails } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   try {
@@ -79,6 +80,18 @@ export async function POST(request: NextRequest) {
       ipAddress,
       userAgent
     );
+
+    // Send signup notification emails to admins (don't block the response)
+    sendSignupNotificationEmails({
+      id: newUser.id.toString(),
+      email: newUser.email,
+      first_name: newUser.first_name,
+      last_name: newUser.last_name,
+      role: newUser.role
+    }).catch(error => {
+      console.error('Failed to send signup notification emails:', error);
+      // Don't throw here as the signup was successful
+    });
 
     const response = NextResponse.json({
       success: true,
