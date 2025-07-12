@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut, UserPlus, ArrowUpDown, ArrowUp, ArrowDown, Download, Settings } from 'lucide-react';
+import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut, UserPlus, ArrowUpDown, ArrowUp, ArrowDown, Download, Settings, DollarSign } from 'lucide-react';
 
 // Import the invitation modal
 import InvitationModal from '../components/InvitationModal';
@@ -379,6 +379,17 @@ export default function Page() {
                   <span className="ml-1 text-black font-bold">{sortedData.length}</span>
                 </div>
               </div>
+              {/* Admin Only - Pricing Factors Button */}
+              {userRole === 'admin' && (
+                <button 
+                  onClick={() => window.location.href = '/pricing-factors'}
+                  className="flex items-center space-x-2 px-3 py-1.5 bg-black/20 hover:bg-black/30 rounded-lg transition-all hover-lift hover-scale"
+                >
+                  <DollarSign size={16} className="text-black" />
+                  <span className="hidden sm:inline text-sm text-black font-medium">Pricing</span>
+                </button>
+              )}
+              
               {/* Admin Only - Settings Button */}
               {userRole === 'admin' && (
                 <button 
@@ -432,7 +443,7 @@ export default function Page() {
                     <span className="text-[#cbff00] font-medium">Important Notice:</span> Once we have published the article for you, any further edits may include an extra charge.
                   </p>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Digital Networking Agency will use reasonable good faith efforts to ensure that such article will remain publicly available in the applicable publication for at least 12 months.
+                    Ascend Agency will use reasonable good faith efforts to ensure that such article will remain publicly available in the applicable publication for at least 12 months.
                   </p>
                 </div>
               </div>
@@ -440,7 +451,7 @@ export default function Page() {
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 lg:ml-8">
                 <button
                   onClick={() => window.open('https://docs.google.com/document/d/1example-pr-questionnaire', '_blank')}
-                  className="flex items-center justify-center space-x-2 px-4 py-2.5 border border-[#cbff00] text-[#cbff00] hover:bg-[#cbff00] hover:text-black font-medium rounded-lg transition-all hover-lift"
+                  className="flex items-center justify-center space-x-2 px-4 py-2.5 bg-[#cbff00] hover:bg-[#9fff00] text-black font-medium rounded-lg transition-all hover-lift shadow-lg hover:shadow-xl"
                 >
                   <Download size={16} />
                   <span>Download PR Questionnaire</span>
