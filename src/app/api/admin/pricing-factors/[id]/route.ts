@@ -3,9 +3,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifySession } from '@/lib/auth';
 import { PricingFactorModel } from '@/lib/pricing-models';
 
+type Params = {
+  id: string;
+};
+
 export async function GET(
   request: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: Params }
 ) {
   try {
     const sessionData = await verifySession(request);
@@ -13,7 +17,7 @@ export async function GET(
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
-    const factor = await PricingFactorModel.getById(parseInt(context.params.id));
+    const factor = await PricingFactorModel.getById(parseInt(params.id));
     if (!factor) {
       return NextResponse.json({ message: 'Factor not found' }, { status: 404 });
     }
@@ -30,7 +34,7 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: Params }
 ) {
   try {
     const sessionData = await verifySession(request);
@@ -39,7 +43,7 @@ export async function PUT(
     }
 
     const { name, description, rules } = await request.json();
-    const factorId = parseInt(context.params.id);
+    const factorId = parseInt(params.id);
 
     if (!name || !rules || !Array.isArray(rules)) {
       return NextResponse.json(
@@ -62,7 +66,7 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: Params }
 ) {
   try {
     const sessionData = await verifySession(request);
@@ -70,7 +74,7 @@ export async function DELETE(
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
-    const factorId = parseInt(context.params.id);
+    const factorId = parseInt(params.id);
     
     if (factorId === 1) {
       return NextResponse.json(
