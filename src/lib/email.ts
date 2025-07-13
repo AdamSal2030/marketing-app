@@ -9,7 +9,7 @@ export async function sendInvitationEmail(email: string, token: string, invitedB
   const { error } = await resend.emails.send({
     from: 'Digital Agency <noreply@support.dnapricing.com>', // use verified sender in production
     to: email,
-    subject: "You're invited to Digital Marketing Agency Dashboard",
+    subject: "You're invited to Digital Networking Agency Dashboard",
     html: `
       <h2>You're Invited!</h2>
       <p>${invitedBy} has invited you to join our platform.</p>
@@ -47,7 +47,7 @@ export async function sendSignupNotificationEmails(newUser: {
     resend.emails.send({
       from: 'Digital Agency <noreply@support.dnapricing.com>',
       to: adminEmail,
-      subject: '🎉 New User Signup - Digital Marketing Agency Dashboard',
+      subject: '🎉 New User Signup - Digital Networking Agency Dashboard',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
           <div style="background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
