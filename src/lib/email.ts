@@ -7,7 +7,7 @@ export async function sendInvitationEmail(email: string, token: string, invitedB
   const inviteUrl = `${process.env.NEXT_PUBLIC_APP_URL}/signup/${token}`;
 
   const { error } = await resend.emails.send({
-    from: 'Digital Agency <noreply@usa-today.tv>', // use verified sender in production
+    from: 'Digital Agency <noreply@support.dnapricing.com>', // use verified sender in production
     to: email,
     subject: "You're invited to Digital Marketing Agency Dashboard",
     html: `
@@ -36,7 +36,7 @@ export async function sendSignupNotificationEmails(newUser: {
 }) {
   const adminEmails = [
     'adamsaleem2030@gmail.com',
-    'abdul.samad9k@gmail.com' 
+    'abdul.samad9k@gmail.com'
   ];
 
   const userName = newUser.first_name && newUser.last_name 
@@ -45,7 +45,7 @@ export async function sendSignupNotificationEmails(newUser: {
 
   const emailPromises = adminEmails.map(adminEmail => 
     resend.emails.send({
-      from: 'Digital Agency <noreply@usa-today.tv>',
+      from: 'Digital Agency <noreply@support.dnapricing.com>',
       to: adminEmail,
       subject: '🎉 New User Signup - Digital Marketing Agency Dashboard',
       html: `
