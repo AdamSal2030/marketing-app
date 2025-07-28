@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut, UserPlus, ArrowUpDown, ArrowUp, ArrowDown, Download, Settings, DollarSign, List, Mail } from 'lucide-react';
+import { Filter, Search, Database, Tv, Radio, ChevronDown, LogOut, UserPlus, ArrowUpDown, ArrowUp, ArrowDown, Download, Settings, DollarSign, List, Mail, Star, Tag } from 'lucide-react';
 
 // Import the invitation modal
 import InvitationModal from '../components/InvitationModal';
@@ -162,6 +162,108 @@ const PricingTiers = ({ priceText }: { priceText?: string | number }) => {
   return <span className="text-[#cbff00] font-semibold">{priceString}</span>;
 };
 
+// Component for Featured Publication Card
+const FeaturedPublicationCard = ({ publication }: { publication: DataItem }) => {
+  const handleExampleClick = () => {
+    // PDF stored in images folder
+    const pdfUrl = '/pr-blast-example.pdf';
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'PR-Blast-Example.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <div className="bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-2xl border-2 border-[#cbff00] p-6 mb-6 shadow-2xl relative overflow-hidden">
+      {/* Sale Badge */}
+      <div className="absolute -top-2 -right-2 z-10">
+        <div className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-bl-2xl rounded-tr-2xl shadow-lg flex items-center space-x-2">
+          <Tag size={16} />
+          <span className="font-bold text-sm">FEATURED</span>
+        </div>
+      </div>
+      
+      {/* Animated background glow */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#cbff00]/5 via-transparent to-[#cbff00]/5"></div>
+      
+      <div className="relative z-10">
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#cbff00] to-[#9fff00] rounded-xl flex items-center justify-center shadow-lg">
+              <Star size={24} className="text-black" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-white mb-1">{publication.name}</h3>
+              <div className="flex items-center space-x-2">
+                <span className="text-[#cbff00] font-semibold text-lg">
+                  ${typeof publication.price === 'number' ? publication.price.toLocaleString() : publication.price}
+                </span>
+                <span className="bg-[#cbff00]/20 text-[#cbff00] px-2 py-1 rounded-full text-xs font-medium">
+                  Best Value
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          {publication.genres && (
+            <div>
+              <h4 className="text-sm font-semibold text-gray-300 mb-2">Genres</h4>
+              <GenreBoxes genres={publication.genres} />
+            </div>
+          )}
+          
+          {publication.regions && (
+            <div>
+              <h4 className="text-sm font-semibold text-gray-300 mb-2">Regions</h4>
+              <span className="text-gray-300 text-sm">{publication.regions}</span>
+            </div>
+          )}
+          
+          {publication.estimated_time && (
+            <div>
+              <h4 className="text-sm font-semibold text-gray-300 mb-2">Estimated Time</h4>
+              <span className="text-gray-300 text-sm">{publication.estimated_time}</span>
+            </div>
+          )}
+        </div>
+        
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
+          <div className="flex items-center space-x-4">
+            {/* Always show PDF download button */}
+            <button
+              onClick={handleExampleClick}
+              className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#cbff00] to-[#9fff00] text-black font-semibold rounded-lg transform hover:scale-105 transition-transform duration-200 shadow-lg hover:shadow-xl"
+            >
+              <Download size={16} />
+              <span>Download Example PDF</span>
+            </button>
+            
+            {publication.url && (
+              <a
+                href={publication.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 px-4 py-2 border-2 border-[#cbff00] text-[#cbff00] font-semibold rounded-lg hover:bg-[#cbff00] hover:text-black transition-colors duration-200"
+              >
+                <span>Visit Website</span>
+              </a>
+            )}
+          </div>
+          
+          <div className="text-right">
+            <p className="text-xs text-gray-400 mb-1">Contact for pricing & availability</p>
+            <p className="text-[#cbff00] font-semibold">sam@digitalnetworkingagency.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function Page() {
   // Store data for each table type separately
   const [allData, setAllData] = useState<Record<TableType, DataItem[]>>({
@@ -261,8 +363,6 @@ export default function Page() {
     setSortDirection(null);
   }, [activeTable]);
 
-
-
   // Memoize filtered and sorted data to prevent unnecessary recalculations
   const filteredAndSortedData = useMemo(() => {
     // Enhanced filtering logic that searches within genres
@@ -323,10 +423,27 @@ export default function Page() {
     });
   }, [data, filters, activeTable, sortDirection]);
 
+  // Find and separate the featured PR Blast publication
+  const featuredPublication = useMemo(() => {
+    if (activeTable !== 'publication') return null;
+    return filteredAndSortedData.find(item => 
+      item.name?.toLowerCase().includes('pr blast') && 
+      item.name?.toLowerCase().includes('200') &&
+      item.name?.toLowerCase().includes('affiliate')
+    );
+  }, [filteredAndSortedData, activeTable]);
+
+  // Remove featured publication from regular data display
+  const regularData = useMemo(() => {
+    if (!featuredPublication) return filteredAndSortedData;
+    return filteredAndSortedData.filter(item => item !== featuredPublication);
+  }, [filteredAndSortedData, featuredPublication]);
+
   // Memoize visible columns - Updated to use auto width instead of fixed
   const visibleColumns = useMemo(() => {
-    if (!filteredAndSortedData.length) return [];
-    const allKeys = Object.keys(filteredAndSortedData[0]);
+    const dataToUse = regularData.length > 0 ? regularData : filteredAndSortedData;
+    if (!dataToUse.length) return [];
+    const allKeys = Object.keys(dataToUse[0]);
     
     if (activeTable === 'publication') {
       const priorityOrder = ['name', 'price', 'genres', 'regions', 'example', 'estimated_time', 'do_follow'];
@@ -342,7 +459,7 @@ export default function Page() {
     } else {
       return allKeys.filter(key => key !== 'url' && key !== 'logo' && key !== 'example').slice(0, 5);
     }
-  }, [filteredAndSortedData, activeTable]);
+  }, [regularData, filteredAndSortedData, activeTable]);
 
   // Optimize filter updates with useCallback
   const updateFilters = useCallback((newFilters: Partial<Filters[TableType]>) => {
@@ -463,13 +580,18 @@ export default function Page() {
         }
         
         .hover-lift:hover {
-          transform: translateY(-1px);
-          transition: transform 0.15s ease;
+          transform: translateY(-1px) !important;
+          transition: transform 0.15s ease !important;
         }
         
         .hover-glow:hover {
-          box-shadow: 0 0 15px rgba(203, 255, 0, 0.3);
-          transition: box-shadow 0.15s ease;
+          box-shadow: 0 0 15px rgba(203, 255, 0, 0.3) !important;
+          transition: box-shadow 0.15s ease !important;
+        }
+        
+        .hover-scale:hover {
+          transform: scale(1.02) !important;
+          transition: transform 0.15s ease !important;
         }
         
         .transition-fast {
@@ -642,6 +764,11 @@ export default function Page() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {/* Featured Publication Card - Only show for publications tab */}
+        {activeTable === 'publication' && featuredPublication && (
+          <FeaturedPublicationCard publication={featuredPublication} />
+        )}
+
         {/* Filters Toggle and Quick Actions */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 space-y-4 sm:space-y-0 animate-fadeIn">
           <div className="flex items-center space-x-4">
@@ -879,8 +1006,8 @@ export default function Page() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-800">
-                  {filteredAndSortedData.length > 0 ? (
-                    filteredAndSortedData.map((row, idx) => (
+                  {regularData.length > 0 ? (
+                    regularData.map((row, idx) => (
                       <tr 
                         key={idx} 
                         style={{ animationDelay: `${idx * 0.05}s` }}
