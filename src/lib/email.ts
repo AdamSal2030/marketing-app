@@ -36,7 +36,8 @@ export async function sendSignupNotificationEmails(newUser: {
 }) {
   const adminEmails = [
     'adamsaleem2030@gmail.com',
-    'abdul.samad9k@gmail.com'
+    'abdul.samad9k@gmail.com',
+    'dna.agency00@gmail.com'
   ];
 
   const userName = newUser.first_name && newUser.last_name 
